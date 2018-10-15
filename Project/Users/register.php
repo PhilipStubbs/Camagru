@@ -3,7 +3,7 @@
 <html>
 <head>
 	<title>Register</title>
-	<link rel="stylesheet" type ="text/css" href="Reg_style.css">
+	<link rel="stylesheet" type ="text/css" href="reg_style.css">
 </head>
 <body>
 	<div class="header">
@@ -14,19 +14,19 @@
 		<?php include('reg_errors.php'); ?>
 		<div class="input-group">
 			<label>Username</label>
-			<input type="text" name="username">
+			<input type="text" name="username" value="<?php echo $username; ?>">
 		</div>
 		<div class="input-group">
 			<label>First name</label>
-			<input type="text" name="firstname">
+			<input type="text" name="firstname" value="<?php echo $firstname; ?>">
 		</div>
 		<div class="input-group">
 			<label>Surname</label>
-			<input type="text" name="surname">
+			<input type="text" name="surname" value="<?php echo $surname; ?>">
 		</div>
 		<div class="input-group">
 			<label>Email</label>
-			<input type="text" name="email">
+			<input type="text" name="email" value="<?php echo $email; ?>">
 		</div>
 		<div class="input-group">
 			<label>Password</label>
