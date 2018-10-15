@@ -1,4 +1,4 @@
-<?php include('server.php'); ?>
+<?php include('user_reg.php'); ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,7 +10,8 @@
 		<h2>Register</h2>
 	</div>
 
-	<form methon="post" action="register.php" id="regform">
+	<form method="post" action="register.php" id="regform">
+		<?php include('reg_errors.php'); ?>
 		<div class="input-group">
 			<label>Username</label>
 			<input type="text" name="username">
@@ -21,7 +22,7 @@
 		</div>
 		<div class="input-group">
 			<label>Surname</label>
-			<input type="text" name="Surname">
+			<input type="text" name="surname">
 		</div>
 		<div class="input-group">
 			<label>Email</label>
@@ -36,7 +37,7 @@
 			<input type="password" name="password_2">
 		</div>
 		<div class="input-group">
-			<button type="submit" name="register" class="btn">Register!</button>
+			<button type="submit" name="reg_user" class="btn">Register!</button>
 		</div>
 		<p>
 			Already a member? <a href="login.php">Sign in</a>

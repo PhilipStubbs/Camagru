@@ -1,5 +1,5 @@
 <?php
-
+// include('connect_database.php');
 $servername = "localhost";
 $username = "root";
 $password = "";
@@ -12,12 +12,20 @@ $users = "CREATE TABLE $dbname.users (
 	id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
 	username VARCHAR (255) UNIQUE,
 	firstname VARCHAR (255),
-	sirname VARCHAR (255),
+	surname VARCHAR (255),
 	email VARCHAR (255) UNIQUE,
-	password VARCHAR (255),
-	confirmed BIT DEFAULT 0 NOT NULL,
-	connumber VARCHAR(50))";
+	password VARCHAR (255))";
 
+
+// $users = "CREATE TABLE $dbname.users (
+// 	id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+// 	username VARCHAR (255) UNIQUE,
+// 	firstname VARCHAR (255),
+// 	surname VARCHAR (255),
+// 	email VARCHAR (255) UNIQUE,
+// 	password VARCHAR (255),
+// 	confirmed BIT DEFAULT 0 NOT NULL,
+// 	connumber VARCHAR(50))";
 	
 
 $sqldb = "CREATE DATABASE $dbname";
