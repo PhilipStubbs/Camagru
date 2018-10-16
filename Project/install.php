@@ -17,15 +17,15 @@ $users = "CREATE TABLE $dbname.users (
 	password VARCHAR (255))";
 
 
-// $users = "CREATE TABLE $dbname.users (
-// 	id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-// 	username VARCHAR (255) UNIQUE,
-// 	firstname VARCHAR (255),
-// 	surname VARCHAR (255),
-// 	email VARCHAR (255) UNIQUE,
-// 	password VARCHAR (255),
-// 	confirmed BIT DEFAULT 0 NOT NULL,
-// 	connumber VARCHAR(50))";
+$users = "CREATE TABLE $dbname.users (
+	id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+	username VARCHAR (255) UNIQUE,
+	firstname VARCHAR (255),
+	surname VARCHAR (255),
+	email VARCHAR (255) UNIQUE,
+	password VARCHAR (255),
+	confirmed BIT DEFAULT 0,
+	confirmcode INT)";
 	
 
 $sqldb = "CREATE DATABASE $dbname";
@@ -37,7 +37,7 @@ mysqli_query($conn, $deleteDB);
 if (mysqli_query($conn, $sqldb) === TRUE)
 {
 
-	echo "Database created successfully\n <BR />";
+	echo "Database created successfully\n ".rand(0,100)."<BR /> ";
 	if (mysqli_query($conn, $users) === TRUE)
 	{
 		

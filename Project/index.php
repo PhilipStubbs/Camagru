@@ -10,12 +10,22 @@
 		<h2>Home Page</h2>
 	</div>
 	<div class="content">
-		<?php if (isset($_SESSION['success'])) : ?>
+		<?php if (isset($_SESSION['message'])) : ?>
 			<div class="error success">
 				<h3> 
 					<?php
-						echo $_SESSION['success'];
-						unset($_SESSION['success']);
+						echo $_SESSION['message'];
+						unset($_SESSION['message']);
+					?>
+				</h3>
+			</div>
+		<?php endif ?>
+		<?php if (isset($_SESSION['error'])) : ?>
+			<div class="error">
+				<h3> 
+					<?php
+						echo $_SESSION['error'];
+						unset($_SESSION['error']);
 					?>
 				</h3>
 			</div>
@@ -26,7 +36,7 @@
 		<?php endif ?>
 		<?php if (!isset($_SESSION['username'])): ?>
 			<p><a href="./Users/login.php?" >Login</a></p>
-			<p><a href="./Users/register.php?">sign up</a></p>
+			<p><a href="./Users/register.php?">Sign up</a></p>
 		<?php endif ?>
 		
 	</div>

@@ -1,6 +1,5 @@
 <?php
 	require('connect_database.php');
-	// $db = mysqli_connect($servername, $dbuser, $dbpassword, $dbname);
 	session_start();
 
 	$username = "";
@@ -19,40 +18,48 @@
 		$password_1 = mysqli_real_escape_string($db, $_POST['password_1']);
 		$password_2 = mysqli_real_escape_string($db, $_POST['password_2']);
 
+		$username_query = "SELECT * FROM $dbname.users WHERE username='$username'";
+			$result_1 = mysqli_query($db, $username_query);
+		$email_equery = "SELECT * FROM $dbname.users WHERE email='$email'";
+			$result_2 = mysqli_query($db, $email_equery);
+
+		if (mysqli_num_rows($result_1) > 0)
+			array_push($errors, "Username already in use");
+		if (mysqli_num_rows($result_2) > 0)
+			array_push($errors, "Email already in use");
 		if (empty($username))
-		{
 			array_push($errors, "Username is required");
-		}
 		if (empty($firstname))
-		{
 			array_push($errors, "Firstname is required");
-		}
 		if (empty($surname))
-		{
 			array_push($errors, "Surname is required");
-		}
 		if (empty($email))
-		{
 			array_push($errors, "Email is required");
-		}
 		if (empty($password_1) || empty($password_2))
-		{
 			array_push($errors, "Password is required");
-		}
 		if ($password_1 != $password_2)
-		{
 			array_push($errors, "Passwords do not match");
-		}
 		if (count($errors) == 0)
 		{
 			$password = md5($password_1);
-			$insert = "INSERT INTO users (id, username, firstname, surname, email, password) 
-						VALUES('', '$username', '$firstname', '$surname', '$email', '$password')";
+
+			// md5(uniqid(rand()))
+			echo md5(rand());
+			$confirmcode = rand();
+			$insert = "INSERT INTO $dbname.users (username, firstname, surname, email, password, confirmcode) 
+						VALUES('$username', '$firstname', '$surname', '$email', '$password', $confirmcode)";
 			mysqli_query($db, $insert);
-			$_SESSION['username'] = $username;
-			$_SESSION['firstname'] = $firstname;
-			$login_message = "You are now logged in";
-			$_SESSION['success'] = $login_message;
+
+			$message = " 
+			Confirm Your Email
+			Click the link below to Verify your account
+			http://localhost:8080/Camagru/Project/Users/email_confirm.php?username=$username&code=$confirmcode
+			";
+			mail($email, "Confirm email", "From: NOREPLY@Camagru.com");
+			// $_SESSION['username'] = $username;
+			// $_SESSION['firstname'] = $firstname;
+			$login_message = "Check Your Email for the Activation link";
+			$_SESSION['message'] = $login_message;
 			header('Location: ../index.php');
 		}
 	}
@@ -72,16 +79,16 @@
 		}
 		if (count($errors) == 0)
 		{
-			echo "TEST";
 			$password = md5($password);
-			$query = "SELECT * FROM users WHERE username='$username' AND password='$password'";
+			$query = "SELECT * FROM $dbname.users WHERE username='$username' AND password='$password'";
 			$result = mysqli_query($db, $query);
 			if (mysqli_num_rows($result) == 1)
 			{
 				$_SESSION['username'] = $username;
 				$_SESSION['firstname'] = $firstname;
+				$_SESSION['email'] = $firstname;
 				$login_message = "You are now logged in";
-				$_SESSION['success'] = $login_message;
+				$_SESSION['message'] = $login_message;
 				header('Location: ../index.php');
 			}
 			else
@@ -96,7 +103,8 @@
 		session_destroy();
 		unset($_SESSION['username']);
 		unset($_SESSION['firstname']);
-		header('location: ../index.php');
+		unset($_SESSION['email']);
+		header('location: index.php');
 	}
 	
 ?>
