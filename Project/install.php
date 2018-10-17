@@ -1,8 +1,8 @@
 <?php
 // include('connect_database.php');
 $servername = "localhost";
-$username = "root";
-$password = "";
+$username = "notroot";
+$password = "123456";
 $dbname = "camagru_db";
 
 
