@@ -1,12 +1,13 @@
 <?php
 // include('connect_database.php');
-$servername = "localhost";
+$servername = "178.128.45.163";
 $username = "notroot";
 $password = "123456";
 $dbname = "camagru_db";
+$port = "3306";
 
-
-$conn = mysqli_connect($servername, $username, $password);
+echo rand()."<br>";
+$conn = mysqli_connect($servername, $username, $password, $port);
 
 // $users = "CREATE TABLE $dbname.users (
 // 	id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
@@ -45,7 +46,7 @@ if (mysqli_query($conn, $sqldb) === TRUE)
 	}
 	else
 	{
-		echo "User Table FAILED\n <BR />";
+		echo "User Table FAILED\n <BR />"; 
 	}
 	
 	
