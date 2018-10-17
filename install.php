@@ -4,10 +4,8 @@ $servername = "178.128.45.163";
 $username = "notroot";
 $password = "123456";
 $dbname = "camagru_db";
-$port = "3306";
 
-echo rand()."<br>";
-$conn = mysqli_connect($servername, $username, $password, $port);
+$conn = mysqli_connect($servername, $username, $password);
 
 // $users = "CREATE TABLE $dbname.users (
 // 	id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,

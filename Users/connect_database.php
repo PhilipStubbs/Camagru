@@ -1,7 +1,7 @@
 <?php
 
 $servername = "178.128.45.163";
-$dbuser = "notroot@localhost";
+$dbuser = "notroot";
 $dbpassword = "123456";
 $dbname = "camagru_db";
 $db = mysqli_connect($servername, $dbuser, $dbpassword, $dbname);
