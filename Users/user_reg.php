@@ -41,23 +41,28 @@
 			array_push($errors, "Passwords do not match");
 		if (count($errors) == 0)
 		{
-			$password = md5($password_1);
+			$password = hash("whirlpool", $password_1);
 
-			// md5(uniqid(rand()))
-			echo md5(rand());
-			$confirmcode = rand();
+			$confirmcode = hash("ripemd160", $username);
+			// $confirmcode = rand();
 			$insert = "INSERT INTO $dbname.users (username, firstname, surname, email, password, confirmcode) 
-						VALUES('$username', '$firstname', '$surname', '$email', '$password', $confirmcode)";
+						VALUES('$username', '$firstname', '$surname', '$email', '$password', '$confirmcode')";
 			mysqli_query($db, $insert);
 
+			$headers = "From: noreplay@philipstubbs.co.za"  . "\r\n" . "Content-Type: text/html; charset=ISO-8859-1\r\n";
 			$message = " 
-			Confirm Your Email
-			Click the link below to Verify your account
-			http://localhost:8080/Camagru/Project/Users/email_confirm.php?username=$username&code=$confirmcode
+			<h1>Activate Your Account.</h1>
+			Click the link below to Verify your account <br />
+			<br />
+				For <strong>Localhost Activation </strong> use the following : <br />
+					http://localhost:8080/Camagru/Users/email_confirm.php?username=$username&code=$confirmcode <br />
+			<br />
+				For  <strong>Server Activation </strong> use the following : <br />
+					http://philipstubbs.co.za/Users/email_confirm.php?username=$username&code=$confirmcode <br />
+
+			<h2>Enjoy</h2>
 			";
-			mail($email, "Confirm email", "From: NOREPLY@Camagru.com");
-			// $_SESSION['username'] = $username;
-			// $_SESSION['firstname'] = $firstname;
+			mail($email, "Activation email", $message , $headers);
 			$login_message = "Check Your Email for the Activation link";
 			$_SESSION['message'] = $login_message;
 			header('Location: ../index.php');
@@ -77,12 +82,16 @@
 		{
 			array_push($errors, "Password is required");
 		}
+		 
 		if (count($errors) == 0)
 		{
-			$password = md5($password);
+			$password = hash("whirlpool", $password);
 			$query = "SELECT * FROM $dbname.users WHERE username='$username' AND password='$password'";
 			$result = mysqli_query($db, $query);
-			if (mysqli_num_rows($result) == 1)
+
+			$is_confirm = "SELECT * FROM $dbname.users WHERE username='$username' AND password='$password' AND confirmed='1'";
+			$is_confirmed_res = mysqli_query($db, $is_confirm);
+			if (mysqli_num_rows($result) == 1 && mysqli_num_rows($is_confirmed_res) == 1)
 			{
 				$_SESSION['username'] = $username;
 				$_SESSION['firstname'] = $firstname;
@@ -91,9 +100,13 @@
 				$_SESSION['message'] = $login_message;
 				header('Location: ../index.php');
 			}
-			else
+			else if (mysqli_num_rows($result) == 0)
 			{
 				array_push($errors, "The Username/Password is incorrect");
+			}
+			else if (mysqli_num_rows($result) == 1 && mysqli_num_rows($is_confirmed_res) == 0)
+			{
+				array_push($errors, "Account is not active! Check your email.");
 			}
 		}
 	}

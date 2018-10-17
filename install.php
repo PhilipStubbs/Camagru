@@ -8,13 +8,13 @@ $dbname = "camagru_db";
 
 $conn = mysqli_connect($servername, $username, $password);
 
-$users = "CREATE TABLE $dbname.users (
-	id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-	username VARCHAR (255) UNIQUE,
-	firstname VARCHAR (255),
-	surname VARCHAR (255),
-	email VARCHAR (255) UNIQUE,
-	password VARCHAR (255))";
+// $users = "CREATE TABLE $dbname.users (
+// 	id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+// 	username VARCHAR (255) UNIQUE,
+// 	firstname VARCHAR (255),
+// 	surname VARCHAR (255),
+// 	email VARCHAR (255) UNIQUE,
+// 	password VARCHAR (255))";
 
 
 $users = "CREATE TABLE $dbname.users (
@@ -23,9 +23,9 @@ $users = "CREATE TABLE $dbname.users (
 	firstname VARCHAR (255),
 	surname VARCHAR (255),
 	email VARCHAR (255) UNIQUE,
-	password VARCHAR (255),
+	password VARCHAR (1024),
 	confirmed BIT DEFAULT 0,
-	confirmcode INT)";
+	confirmcode VARCHAR (1024))";
 	
 
 $sqldb = "CREATE DATABASE $dbname";
