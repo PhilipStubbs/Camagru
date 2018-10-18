@@ -1,5 +1,6 @@
 <?php include('user_reg.php'); ?>
 <!DOCTYPE html>
+<script src='https://www.google.com/recaptcha/api.js'></script>
 <html>
 <head>
 	<title>Register</title>
@@ -38,6 +39,7 @@
 			<label>Confirm Password</label>
 			<input type="password" name="password_2">
 		</div>
+		<div class="g-recaptcha" data-sitekey="6LfatnUUAAAAANLQGyIaJpbHz-1RRQtVLVFws4Lj"></div>
 		<div class="input-group">
 			<button type="submit" name="reg_user" class="btn">Register</button>
 		</div>

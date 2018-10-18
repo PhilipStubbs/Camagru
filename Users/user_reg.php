@@ -11,6 +11,32 @@
 
 	if (isset($_POST['reg_user']))
 	{
+		$secret = '6LfatnUUAAAAAMZLInZrUL3RVhHojCeHuLKA9den';
+		if (isset($_POST['g-recaptcha-response']) && !empty($_POST['g-recaptcha-response']) && !is_null($_POST['g-recaptcha-response']))
+		{
+			$response = $_POST["g-recaptcha-response"];
+			$url = 'https://www.google.com/recaptcha/api/siteverify';
+			$data = array(
+				'secret' => '6LfatnUUAAAAAMZLInZrUL3RVhHojCeHuLKA9den',
+				'response' => $_POST["g-recaptcha-response"]
+			);
+			$options = array(
+				'http' => array (
+					'method' => 'POST',
+					'content' => http_build_query($data)
+				));
+			$context  = stream_context_create($options);
+			$verify = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret={$secret}&response={$response}");
+			$captcha_success=json_decode($verify);
+			if ($captcha_success->success==false) {
+				array_push($errors, "reCAPTCHA Error, Please try again");
+			}
+		}
+		else
+		{
+			array_push($errors, "Are you a Robot? Confirm to proceed.");
+		}
+
 		$username = mysqli_real_escape_string($db, $_POST['username']);
 		$firstname = mysqli_real_escape_string($db, $_POST['firstname']);
 		$surname = mysqli_real_escape_string($db, $_POST['surname']);
