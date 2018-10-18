@@ -1,58 +1,75 @@
 <?php
 // include('connect_database.php');
-$servername = "178.128.45.163";
-$username = "notroot";
-$password = "123456";
-$dbname = "camagru_db";
-
-$conn = mysqli_connect($servername, $username, $password);
-
-// $users = "CREATE TABLE $dbname.users (
-// 	id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-// 	username VARCHAR (255) UNIQUE,
-// 	firstname VARCHAR (255),
-// 	surname VARCHAR (255),
-// 	email VARCHAR (255) UNIQUE,
-// 	password VARCHAR (255))";
-
-
-$users = "CREATE TABLE $dbname.users (
-	id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-	username VARCHAR (255) UNIQUE,
-	firstname VARCHAR (255),
-	surname VARCHAR (255),
-	email VARCHAR (255) UNIQUE,
-	password VARCHAR (1024),
-	confirmed BIT DEFAULT 0,
-	confirmcode VARCHAR (1024))";
-	
-
-$sqldb = "CREATE DATABASE $dbname";
-$deleteDB = " DROP DATABASE $dbname";
-
-mysqli_query($conn, $deleteDB);
-
-
-if (mysqli_query($conn, $sqldb) === TRUE)
+if (isset($_POST['value']))
 {
+	$dbservername = "178.128.45.163";
+	$dbuser = "notroot";
+	$dbpassword = $_POST['value'];
+	$dbname = "camagru_db";
 
-	echo "Database created successfully\n ".rand(0,100)."<BR /> ";
-	if (mysqli_query($conn, $users) === TRUE)
-	{
+	$conn = mysqli_connect($dbservername, $dbuser, $dbpassword);
+
+
+	$users = "CREATE TABLE $dbname.users (
+		id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+		username VARCHAR (255) UNIQUE,
+		firstname VARCHAR (255),
+		surname VARCHAR (255),
+		email VARCHAR (255) UNIQUE,
+		password VARCHAR (1024),
+		confirmed BIT DEFAULT 0,
+		confirmcode VARCHAR (1024))";
 		
-		echo "User Table created successfully\n <BR />";
+
+	$sqldb = "CREATE DATABASE $dbname";
+	$deleteDB = " DROP DATABASE $dbname";
+
+	mysqli_query($conn, $deleteDB);
+
+
+	if (mysqli_query($conn, $sqldb) === TRUE)
+	{
+
+		echo "Database created successfully\n ".rand(0,100)."<BR /> ";
+		if (mysqli_query($conn, $users) === TRUE)
+		{
+			
+			echo "User Table created successfully\n <BR />";
+		}
+		else
+		{
+			echo "User Table FAILED\n <BR />"; 
+		}
+		
+		
 	}
 	else
 	{
-		echo "User Table FAILED\n <BR />"; 
+		echo "Error creating database: " . $conn->error;
 	}
-	
-	
+	$conn->close();
 }
-else
-{
-	echo "Error creating database: " . $conn->error;
-}
-$conn->close();
-
 ?>
+
+<html>
+<head>
+	<title>Database Controls</title>
+	<link rel="stylesheet" type ="text/css" href="./Users/reg_style.css">
+</head>
+<body>
+	<div class="header">
+		<h1>Database Controls</h1>
+		<h2>Reset Database?</h2>
+	</div>
+
+		<form method="post" action="" id="regform">
+		<div >
+			<center>
+				<h3> Enter Database Password? </h3>				
+				<input type="password" name="value">
+				<input type="submit">
+			</center>
+		</div>
+		</form>
+</body>
+</html>
