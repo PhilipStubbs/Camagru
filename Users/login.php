@@ -4,8 +4,10 @@
 <head>
 	<title>Login</title>
 	<link rel="stylesheet" type ="text/css" href="reg_style.css">
+	<link rel="stylesheet" type ="text/css" href="../template_style.css">
 </head>
 <body>
+	<?php include_once('../header_template.php'); ?>
 	<div class="header">
 		<h2>Login</h2>
 	</div>
@@ -27,5 +29,7 @@
 			Not yet a member? <a href="register.php">Sign up</a>
 		</p>
 	<form>
+	<?php include_once('../footer_template.php'); ?>
 </body>
+
 </html>

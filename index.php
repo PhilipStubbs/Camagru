@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <?php include('./Users/user_reg.php'); ?>
+
 <html>
+
 <head>
 	<title>Login</title>
 	<link rel="stylesheet" type ="text/css" href="./Users/reg_style.css">
 </head>
 <body>
+	<?php include_once('header_template.php'); ?>
 	<div class="header">
 		<h2>Home Page</h2>
 	</div>
@@ -30,16 +33,18 @@
 				</h3>
 			</div>
 		<?php endif ?>
-		<?php if (isset($_SESSION['username'])): ?>
-			<p>Welcome <strong><?php echo $_SESSION['firstname']; ?></strong></p>
-			<p><a href="index.php?logout='1'" style="color: red;">Logout</a></p>
-		<?php endif ?>
+		
+	</div>
+	<?php include_once('footer_template.php'); ?>
+</body>
+</html>
+
+
+	<!-- <?php if (isset($_SESSION['username'])): ?>
+			<p>Welcome <strong><?php echo $_SESSION['firstname']; ?></strong> <br />
+			<a href="index.php?logout='1'" style="color: red;">Logout</a></p>
+			<?php endif ?>
 		<?php if (!isset($_SESSION['username'])): ?>
 			<p><a href="./Users/login.php?" >Login</a></p>
 			<p><a href="./Users/register.php?">Sign up</a></p>
-		<?php endif ?>
-		
-	</div>
-	
-</body>
-</html>
+		<?php endif ?> -->

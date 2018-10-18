@@ -93,9 +93,16 @@
 			$is_confirmed_res = mysqli_query($db, $is_confirm);
 			if (mysqli_num_rows($result) == 1 && mysqli_num_rows($is_confirmed_res) == 1)
 			{
+				$findfirstname = "SELECT firstname FROM $dbname.users WHERE username='$username' AND password='$password'";
+				$findemail = "SELECT email FROM $dbname.users WHERE username='$username' AND password='$password'";
+				$firstname = mysqli_query($db, $findfirstname);
+				$email = mysqli_query($db, $findemail);
+				$tmp_name = mysqli_fetch_array($firstname);
+				$tmp_name2 = mysqli_fetch_array($email);
+
 				$_SESSION['username'] = $username;
-				$_SESSION['firstname'] = $firstname;
-				$_SESSION['email'] = $firstname;
+				$_SESSION['firstname'] = $tmp_name['firstname'];
+				$_SESSION['email'] = $tmp_name2['email'];
 				$login_message = "You are now logged in";
 				$_SESSION['message'] = $login_message;
 				header('Location: ../index.php');
