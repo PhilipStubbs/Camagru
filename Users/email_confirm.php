@@ -7,8 +7,8 @@
 	$confirmcode = $_GET['code'];
 
 	$query = $conn->prepare("SELECT * FROM $dbname.users WHERE username = :usr AND confirmcode = :con ");
-	$usercheck->execute(["usr"=>$username , "con"=>$confirmcode]);
-	$result = $usercheck->fetchAll();
+	$query->execute(["usr"=>$username , "con"=>$confirmcode]);
+	$result = $query->fetchAll();
 
 		
 	if (count($result) == 1)
