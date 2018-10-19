@@ -43,16 +43,20 @@
 		$email = mysqli_real_escape_string($db, $_POST['email']);
 		$password_1 = mysqli_real_escape_string($db, $_POST['password_1']);
 		$password_2 = mysqli_real_escape_string($db, $_POST['password_2']);
+		
+		$usercheck = $conn->prepare("SELECT * FROM $dbname.users WHERE username = :usr");
+		$usercheck->execute(["usr"=>$username]);
+		$result_1 = $usercheck->fetchAll();
 
-		$username_query = "SELECT * FROM $dbname.users WHERE username='$username'";
-			$result_1 = mysqli_query($db, $username_query);
-		$email_equery = "SELECT * FROM $dbname.users WHERE email='$email'";
-			$result_2 = mysqli_query($db, $email_equery);
+		$emailcheck = $conn->prepare("SELECT * FROM $dbname.users WHERE email = :eml");
+		$emailcheck->execute(["eml"=>$email]);
+		$result_2 = $emailcheck->fetchAll();
 
-		if (mysqli_num_rows($result_1) > 0)
-			array_push($errors, "Username already in use");
-		if (mysqli_num_rows($result_2) > 0)
-			array_push($errors, "Email already in use");
+
+		if (count($result_1) > 0)
+			array_push($errors, "'$username' already in use");
+		if (count($result_2) > 0)
+			array_push($errors, "'$email' is already in use");
 		if (empty($username))
 			array_push($errors, "Username is required");
 		if (empty($firstname))
@@ -65,15 +69,16 @@
 			array_push($errors, "Password is required");
 		if ($password_1 != $password_2)
 			array_push($errors, "Passwords do not match");
+
+
 		if (count($errors) == 0)
 		{
 			$password = hash("whirlpool", $password_1);
 
 			$confirmcode = hash("ripemd160", $username);
-			// $confirmcode = rand();
 			$insert = "INSERT INTO $dbname.users (username, firstname, surname, email, password, confirmcode) 
 						VALUES('$username', '$firstname', '$surname', '$email', '$password', '$confirmcode')";
-			mysqli_query($db, $insert);
+			$conn->exec($insert);
 
 			$headers = "From: noreplay@philipstubbs.co.za"  . "\r\n" . "Content-Type: text/html; charset=ISO-8859-1\r\n";
 			$message = " 
@@ -97,8 +102,8 @@
 
 	if (isset($_POST['login']))
 	{
-		$username = mysqli_real_escape_string($db, $_POST['username']);
-		$password = mysqli_real_escape_string($db, $_POST['password']);
+		$username = $_POST['username'];
+		$password = $_POST['password'];
 
 		if (empty($username))
 		{
@@ -111,35 +116,56 @@
 		 
 		if (count($errors) == 0)
 		{
-			$password = hash("whirlpool", $password);
-			$query = "SELECT * FROM $dbname.users WHERE username='$username' AND password='$password'";
-			$result = mysqli_query($db, $query);
 
-			$is_confirm = "SELECT * FROM $dbname.users WHERE username='$username' AND password='$password' AND confirmed='1'";
-			$is_confirmed_res = mysqli_query($db, $is_confirm);
-			if (mysqli_num_rows($result) == 1 && mysqli_num_rows($is_confirmed_res) == 1)
+
+			$password = hash("whirlpool", $password);
+			$bool = 1;
+	
+			$query = $conn->prepare("SELECT * FROM $dbname.users WHERE username = :usr AND password = :psw");
+			$query->execute(["usr"=>$username, "psw"=>$password]);
+			$result = $query->fetchAll();
+			
+			$is_confirm = $conn->prepare("SELECT * FROM $dbname.users WHERE username= :usr AND password = :psw AND confirmed = :boo");
+			$is_confirm->execute(["usr"=>$username, "psw"=>$password, "boo"=>$bool]);
+			$is_confirmed_res = $is_confirm->fetchAll();
+
+			if (count($result) == 1 && count($is_confirmed_res) == 1)
 			{
-				$findfirstname = "SELECT firstname FROM $dbname.users WHERE username='$username' AND password='$password'";
-				$findemail = "SELECT email FROM $dbname.users WHERE username='$username' AND password='$password'";
-				$firstname = mysqli_query($db, $findfirstname);
-				$email = mysqli_query($db, $findemail);
-				$tmp_name = mysqli_fetch_array($firstname);
-				$tmp_name2 = mysqli_fetch_array($email);
+				$findfirstname =  $conn->prepare("SELECT firstname FROM $dbname.users WHERE username = :usr AND password = :psw");
+				$findfirstname->execute(["usr"=>$username, "psw"=>$password]);
+				$Thefirstname = $findfirstname->fetchAll();
+
+				$findemail = $conn->prepare("SELECT email FROM $dbname.users WHERE username = :usr AND password = :psw");
+				$findemail->execute(["usr"=>$username, "psw"=>$password]);
+				$Theemail= $findemail->fetchAll();
+
+				foreach ($Thefirstname as $tmp)
+				{
+					$firstname = $tmp["firstname"];
+				}
+				foreach ($Theemail as $tmp)
+				{
+					$email = $tmp["email"];
+				}
 
 				$_SESSION['username'] = $username;
-				$_SESSION['firstname'] = $tmp_name['firstname'];
-				$_SESSION['email'] = $tmp_name2['email'];
+				$_SESSION['firstname'] = ucwords($firstname);
+				$_SESSION['email'] = $email;
 				$login_message = "You are now logged in";
 				$_SESSION['message'] = $login_message;
 				header('Location: ../index.php');
 			}
-			else if (mysqli_num_rows($result) == 0)
+			else if (count($result) == 0)
 			{
 				array_push($errors, "The Username/Password is incorrect");
 			}
-			else if (mysqli_num_rows($result) == 1 && mysqli_num_rows($is_confirmed_res) == 0)
+			else if (count($result) == 1 && count($is_confirmed_res) == 0)
 			{
 				array_push($errors, "Account is not active! Check your email.");
+			}
+			else 
+			{
+				array_push($errors, "ERROR");
 			}
 		}
 	}
