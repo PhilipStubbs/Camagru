@@ -6,12 +6,15 @@
 	$username = $_GET['username'];
 	$confirmcode = $_GET['code'];
 
-	$query = "SELECT * FROM $dbname.users WHERE username='$username' AND confirmcode='$confirmcode'";
-	$result = mysqli_query($db, $query);
-	if (mysqli_num_rows($result) == 1)
+	$query = $conn->prepare("SELECT * FROM $dbname.users WHERE username = :usr AND confirmcode = :con ");
+	$usercheck->execute(["usr"=>$username , "con"=>$confirmcode]);
+	$result = $usercheck->fetchAll();
+
+		
+	if (count($result) == 1)
 	{
 		$update_con = "UPDATE $dbname.users SET confirmed=1 WHERE username='$username' AND confirmcode='$confirmcode'";
-		if (mysqli_query($db, $update_con))
+		if ($conn->exec($update_con))
 		{
 			$login_message = "Your account is active! You can now login!";
 			$_SESSION['message'] = $login_message;

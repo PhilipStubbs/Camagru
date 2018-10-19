@@ -37,12 +37,12 @@
 			array_push($errors, "Are you a Robot? Confirm to proceed.");
 		}
 
-		$username = mysqli_real_escape_string($db, $_POST['username']);
-		$firstname = mysqli_real_escape_string($db, $_POST['firstname']);
-		$surname = mysqli_real_escape_string($db, $_POST['surname']);
-		$email = mysqli_real_escape_string($db, $_POST['email']);
-		$password_1 = mysqli_real_escape_string($db, $_POST['password_1']);
-		$password_2 = mysqli_real_escape_string($db, $_POST['password_2']);
+		$username = $_POST['username'];
+		$firstname = $_POST['firstname'];
+		$surname = $_POST['surname'];
+		$email = $_POST['email'];
+		$password_1 = $_POST['password_1'];
+		$password_2 = $_POST['password_2'];
 		
 		$usercheck = $conn->prepare("SELECT * FROM $dbname.users WHERE username = :usr");
 		$usercheck->execute(["usr"=>$username]);

@@ -13,13 +13,12 @@ $opt = [
 ];
 
 
-$db = mysqli_connect($servername, $dbuser, $dbpassword, $dbname);
 $conn = new PDO("mysql:host=$servername;dbname=$dbname", $dbuser, $dbpassword, $opt);
 $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-if (!$db) {
+if (!$conn) {
 	die("Connection failed: " . mysqli_connect_error());
 }
-return ($db);
+return ($conn);
 
 ?>
