@@ -75,12 +75,22 @@
 		{
 			$password = hash("whirlpool", $password_1);
 
+
 			$confirmcode = hash("ripemd160", $username);
 			$insert = "INSERT INTO $dbname.users (username, firstname, surname, email, password, confirmcode) 
 						VALUES('$username', '$firstname', '$surname', '$email', '$password', '$confirmcode')";
 			$conn->exec($insert);
 
-			$headers = "From: noreplay@philipstubbs.co.za"  . "\r\n" . "Content-Type: text/html; charset=ISO-8859-1\r\n";
+			// $headers = "From: noreplay@philipstubbs.co.za"  . "\r\n"l
+
+
+			$headers = "From: noreplay@philipstubbs.co.za\r\n";
+			$headers .= "Reply-To: noreplay@philipstubbs.co.za\r\n";
+			$headers .= "Return-Path: noreplay@philipstubbs.co.za\r\n";
+			$headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
+			// $headers .= "BCC: hidden@example.com\r\n";
+
+
 			$message = " 
 			<h1>Activate Your Account.</h1>
 			Click the link below to Verify your account <br />
