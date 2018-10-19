@@ -73,3 +73,16 @@ body
 	border: 1px solid #3c763d;
 	margin-bottom: 20px;
   }
+
+  .account_settings 
+{
+	width: 60%;
+	margin: 50px auto 0px;
+	color: white;
+	background :rgb(79, 89, 102);
+	text-align: center;
+	border: 1px solid #B0C4DE;
+	border-bottom: none;
+	border-radius: 10px 10px 0px 0px;
+	padding: 20px;
+}

@@ -28,7 +28,7 @@
 		<p>
 			Not yet a member? <a href="register.php">Sign up</a>
 		</p>
-	<form>
+	</form>
 	<?php include_once('../footer_template.php'); ?>
 </body>
 

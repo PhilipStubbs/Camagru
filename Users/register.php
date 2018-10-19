@@ -46,7 +46,7 @@
 		<p>
 			Already a member? <a href="login.php">Sign in</a>
 		</p>
-	<form>
+	</form>
 	<?php include_once('../footer_template.php'); ?>
 </body>
 </html>
