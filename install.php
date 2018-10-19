@@ -7,8 +7,26 @@ if (isset($_POST['value']))
 	$dbpassword = $_POST['value'];
 	$dbname = "camagru_db";
 
-	$conn = mysqli_connect($dbservername, $dbuser, $dbpassword);
+	// $conn = mysqli_connect($dbservername, $dbuser, $dbpassword);
 
+
+	$opt = [
+		PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
+		PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+		PDO::ATTR_EMULATE_PREPARES   => false,
+	];
+	
+	
+	$conn = new PDO("mysql:host=$dbservername", $dbuser, $dbpassword);
+	$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+
+		
+
+
+	$deleteDB = " DROP DATABASE $dbname";
+	
+	$sqldb = "CREATE DATABASE $dbname";
 
 	$users = "CREATE TABLE $dbname.users (
 		id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
@@ -19,27 +37,23 @@ if (isset($_POST['value']))
 		password VARCHAR (1024),
 		confirmed BIT DEFAULT 0,
 		confirmcode VARCHAR (1024))";
-		
 
-	$sqldb = "CREATE DATABASE $dbname";
-	$deleteDB = " DROP DATABASE $dbname";
-
-	mysqli_query($conn, $deleteDB);
+	$conn->exec($deleteDB);
 
 
-	if (mysqli_query($conn, $sqldb) === TRUE)
+	if ($conn->exec($sqldb))
 	{
-
 		echo "Database created successfully\n ".rand(0,100)."<BR /> ";
-		if (mysqli_query($conn, $users) === TRUE)
-		{
-			
-			echo "User Table created successfully\n <BR />";
-		}
-		else
-		{
-			echo "User Table FAILED\n <BR />"; 
-		}
+		$conn->exec($users);
+		echo "User Table created successfully\n <BR />";
+		// if ($conn->exec($users))
+		// {
+			// echo "User Table created successfully\n <BR />";
+		// }
+		// else
+		// {
+		// 	echo "User Table FAILED\n <BR />"; 
+		// }
 		
 		
 	}
