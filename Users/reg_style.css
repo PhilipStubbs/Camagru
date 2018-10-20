@@ -13,7 +13,8 @@ body
 	width: 30%;
 	margin: 50px auto 0px;
 	color: white;
-	background :rgb(79, 89, 102);
+	/* background :rgb(79, 89, 102); */
+	background : rgb(73, 101, 138);
 	text-align: center;
 	border: 1px solid #B0C4DE;
 	border-bottom: none;
@@ -79,10 +80,26 @@ body
 	width: 60%;
 	margin: 50px auto 0px;
 	color: white;
-	background :rgb(79, 89, 102);
+	/* background :rgb(79, 89, 102); */
+	background : rgb(73, 101, 138);
 	text-align: center;
 	border: 1px solid #B0C4DE;
 	border-bottom: none;
 	border-radius: 10px 10px 0px 0px;
 	padding: 20px;
+}
+
+.ac_setting_btn
+{
+	padding: 10px;
+	font-size: 20px;
+	color: white;
+	background: rgb(75, 91, 112);
+	border: none;
+	border-radius: 5px;
+	margin: 0px 0px 10px 0px;
+	display: block;
+	text-align: center;
+	/* margin: 3px; */
+	
 }

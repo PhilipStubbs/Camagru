@@ -145,9 +145,14 @@
 				$findfirstname->execute(["usr"=>$username, "psw"=>$password]);
 				$Thefirstname = $findfirstname->fetchAll();
 
+				$findsurname = $conn->prepare("SELECT surname FROM $dbname.users WHERE username = :usr AND password = :psw");
+				$findsurname->execute(["usr"=>$username, "psw"=>$password]);
+				$Theesurname= $findsurname->fetchAll();
+
 				$findemail = $conn->prepare("SELECT email FROM $dbname.users WHERE username = :usr AND password = :psw");
 				$findemail->execute(["usr"=>$username, "psw"=>$password]);
 				$Theemail= $findemail->fetchAll();
+				
 
 				foreach ($Thefirstname as $tmp)
 				{
@@ -157,9 +162,14 @@
 				{
 					$email = $tmp["email"];
 				}
+				foreach ($Theesurname as $tmp)
+				{
+					$surname = $tmp["surname"];
+				}
 
 				$_SESSION['username'] = $username;
 				$_SESSION['firstname'] = ucwords($firstname);
+				$_SESSION['surname'] = ucwords($surname);
 				$_SESSION['email'] = $email;
 				$login_message = "You are now logged in";
 				$_SESSION['message'] = $login_message;
