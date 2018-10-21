@@ -96,7 +96,7 @@
 			Click the link below to Verify your account <br />
 			<br />
 				For <strong>Localhost Activation </strong> use the following : <br />
-					http://localhost:8080/Camagru/Users/email_confirm.php?username=$username&code=$confirmcode <br />
+					http://localhost:8080/Users/email_confirm.php?username=$username&code=$confirmcode <br />
 			<br />
 				For  <strong>Server Activation </strong> use the following : <br />
 					http://philipstubbs.co.za/Users/email_confirm.php?username=$username&code=$confirmcode <br />

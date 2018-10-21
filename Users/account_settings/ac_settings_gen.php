@@ -13,16 +13,19 @@
 		$update_user = $conn->prepare("UPDATE $dbname.users SET username= :new WHERE username= :usr AND email= :email");
 		$update_user->execute(["new"=>$new_username ,"usr"=>$username, "email"=>$email]);
 		$_SESSION['username'] = $new_username;
-		header('location: ac_settings_gen.php');
+		$_SESSION['message'] = "Info Updated";
+			header('Location: ../../index.php');
+		// header('location: ac_settings_gen.php');
 	};
 	if (isset($_POST['firstname']) && $_POST['firstname'] != $firstname)
 	{
-		
 		$new_firstname = $_POST['firstname'];
 		$update_user = $conn->prepare("UPDATE $dbname.users SET firstname= :new WHERE username= :usr AND email= :email");
 		$update_user->execute(["new"=>$new_firstname ,"usr"=>$username, "email"=>$email]);
 		$_SESSION['firstname'] = $new_firstname;
-		header('location: ac_settings_gen.php');
+		$_SESSION['message'] = "Info Updated";
+			header('Location: ../../index.php');
+		// header('location: ac_settings_gen.php');
 	};
 	if (isset($_POST['surname']) && $_POST['surname'] != $surname)
 	{
@@ -30,7 +33,9 @@
 		$update_user = $conn->prepare("UPDATE $dbname.users SET surname= :new WHERE username= :usr AND email= :email");
 		$update_user->execute(["new"=>$new_surname ,"usr"=>$username, "email"=>$email]);
 		$_SESSION['surname'] = $new_surname;
-		header('location: ac_settings_gen.php');
+		$_SESSION['message'] = "Info Updated";
+			header('Location: ../../index.php');
+		// header('location: ac_settings_gen.php');
 	};
 	if (isset($_POST['email']) && $_POST['email'] != $email)
 	{
@@ -38,7 +43,9 @@
 		$update_user = $conn->prepare("UPDATE $dbname.users SET email= :new WHERE username= :usr AND email= :email");
 		$update_user->execute(["new"=>$new_email ,"usr"=>$username, "email"=>$email]);
 		$_SESSION['email'] = $new_email;
-		header('location: ac_settings_gen.php');
+		$_SESSION['message'] = "Info Updated";
+			header('Location: ../../index.php');
+		// header('location: ac_settings_gen.php');
 	};
 	
 ?>

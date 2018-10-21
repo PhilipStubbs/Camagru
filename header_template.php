@@ -12,26 +12,33 @@
 			<p class="Weloutbut" style="text-align: Center;">Welcome <strong><?php echo $_SESSION['firstname']; ?></strong></p>
 			
 			<a href="index.php?logout='1'" >
-				<div class="headerbutton" style="float: right">
+				<div id="headerbutton" style="float: right">
 					<p class="headerbut">Logout </p>
 				</div>
 			</a>
-			<a href="/Users/account_settings.php">
-				<div class="headerbutton" style="float: left">
-					<p class="headerbut"> Account </p>
-				</div>
+			<a href="/Users/account_settings.php" style="text-decoration: none;">
+				<div id="headerbutton" class="dropdown" style="float: left">
+					<p class="headerbut" style="color: white;">Account</p>
 			</a>
+					<div class="dropdown-content">
+						<a href="/Users/account_settings/ac_settings_gen.php">General</a>
+						<a href="/Users/account_settings/ac_settings_psw.php">Password</a>
+					</div>
+				</div>
+			
+
+
 			
 		<?php endif ?>
 		<?php if (!isset($_SESSION['username'])): ?>
 		<a href="/Users/login.php?">
-			<div class="headerbutton" style="float: right">
+			<div id="headerbutton" style="float: right">
 				<p class="headerbut">Login </p>
 			</div>
 		</a>
 			
 		<a href="/Users/register.php? " >
-			<div class="headerbutton" style="float: right">
+			<div id="headerbutton" style="float: right">
 				<p class="headerbut"> Sign up</p>
 			</div>
 		</a>

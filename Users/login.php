@@ -26,6 +26,11 @@
 			<button type="submit" name="login" class="btn">Login</button>
 		</div>
 		<p>
+
+			Cant login? <a href="cant_login.php">Reset Your Password</a>
+		</p>
+		<br />
+		<p>
 			Not yet a member? <a href="register.php">Sign up</a>
 		</p>
 	</form>
