@@ -1,6 +1,9 @@
 <!DOCTYPE html>
-<?php include('../user_reg.php'); ?>
+<?php include('../server.php'); ?>
 <?php
+	if (!$_SESSION)
+		header('Location: ../../index.php');
+
 	include('../connect_database.php');
 	$username = $_SESSION['username'];
 	$firstname = $_SESSION['firstname'];

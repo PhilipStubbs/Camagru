@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<?php include('./Users/user_reg.php'); ?>
+<?php include('./Users/server.php'); ?>
 <?php include_once("base.php"); ?>
 
 <html>

@@ -1,4 +1,4 @@
-<?php include('user_reg.php'); ?>
+<?php include('server.php'); ?>
 <?php
 
 	require('connect_database.php');
@@ -70,7 +70,7 @@
 ?>
 
 <!DOCTYPE html>
-<?php include('user_reg.php'); ?>
+<?php include('server.php'); ?>
 	<?php include_once("../base.php"); ?>
 
 <html>

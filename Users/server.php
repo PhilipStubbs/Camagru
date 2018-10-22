@@ -1,7 +1,6 @@
 <?php
 	require('connect_database.php');
-	if (!isset($_Session))
-		session_start();
+	session_start();
 
 	$username = "";
 	$firstname = "";

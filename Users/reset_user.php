@@ -1,10 +1,16 @@
-<?php include('user_reg.php'); ?>
+<?php include('server.php'); ?>
 <?php
 	// session_start();
 	require('connect_database.php');
 	$errors = array();
 	$email = $_GET['email'];
 	$code_1 = $_GET['code_1'];
+	if (empty($email) || empty ($email))
+	{
+		$error = "Error";
+		$_SESSION['error'] .= $error;
+		header('Location: ../index.php');
+	}
 
 	$query = $conn->prepare("SELECT * FROM $dbname.users WHERE email = :eil AND confirmcode = :con ");
 	$query->execute(["eil"=>$email , "con"=>$code_1]);

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<?php include('user_reg.php'); ?>
+<?php include('server.php'); ?>
 
 <?php
 	include('connect_database.php');

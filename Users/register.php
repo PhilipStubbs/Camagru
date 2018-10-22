@@ -1,4 +1,4 @@
-<?php include('user_reg.php'); ?>
+<?php include('server.php'); ?>
 <!DOCTYPE html>
 <?php include_once("../base.php"); ?>
 <script src='https://www.google.com/recaptcha/api.js'></script>
