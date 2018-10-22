@@ -31,6 +31,18 @@
 				array_push($errors, "Please Enter Your New Password");
 			if (empty($con_password) && isset($_POST['con_password']))
 				array_push($errors, "Please Confirm Your New Password");
+			if (isset($new_password))
+			{
+				if (!preg_match("#[0-9]+#", $new_password)) {
+					array_push($errors, "Password must include at least one number!");
+				}
+				if (!preg_match("#[A-Z]+#", $new_password)) {
+					array_push($errors,"Password must include at least one uppercase letter!");
+				} 
+				if (!preg_match("#[a-z]+#", $new_password)) {
+					array_push($errors,"Password must include at least one lowercase letter!");
+				} 
+			}
 
 			if (!empty($new_password) && isset($_POST['new_password']) && !empty($con_password) && isset($_POST['con_password']))
 			{

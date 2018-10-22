@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<?php include_once("/base.php"); ?>
+	<?php include_once("base.php"); ?>
 	<link rel="stylesheet" type ="text/css" href="template_style.css">
 </head>
 <body>

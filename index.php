@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <?php include('./Users/user_reg.php'); ?>
-<?php include_once("/base.php"); ?>
+<?php include_once("base.php"); ?>
 
 <html>
 

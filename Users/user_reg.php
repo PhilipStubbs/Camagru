@@ -1,6 +1,7 @@
 <?php
 	require('connect_database.php');
-	session_start();
+	if (!isset($_Session))
+		session_start();
 
 	$username = "";
 	$firstname = "";
@@ -51,7 +52,7 @@
 		$emailcheck = $conn->prepare("SELECT * FROM $dbname.users WHERE email = :eml");
 		$emailcheck->execute(["eml"=>$email]);
 		$result_2 = $emailcheck->fetchAll();
-
+// ASDasdASDASDasdasd123456
 
 		if (count($result_1) > 0)
 			array_push($errors, "'$username' already in use");
@@ -69,7 +70,16 @@
 			array_push($errors, "Password is required");
 		if ($password_1 != $password_2)
 			array_push($errors, "Passwords do not match");
-
+	
+		if (!preg_match("#[0-9]+#", $password_1)) {
+			array_push($errors, "Password must include at least one number!");
+		}
+		if (!preg_match("#[A-Z]+#", $password_1)) {
+			array_push($errors,"Password must include at least one uppercase letter!");
+		} 
+		if (!preg_match("#[a-z]+#", $password_1)) {
+			array_push($errors,"Password must include at least one lowercase letter!");
+		} 
 
 		if (count($errors) == 0)
 		{

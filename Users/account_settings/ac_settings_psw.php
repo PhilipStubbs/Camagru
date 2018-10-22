@@ -26,6 +26,18 @@
 		if ($new_password != $con_password)
 			array_push($errors, "Your Passwords Do Not Match");
 	}
+	if (isset($new_password))
+	{
+		if (!preg_match("#[0-9]+#", $new_password)) {
+			array_push($errors, "Password must include at least one number!");
+		}
+		if (!preg_match("#[A-Z]+#", $new_password)) {
+			array_push($errors,"Password must include at least one uppercase letter!");
+		} 
+		if (!preg_match("#[a-z]+#", $new_password)) {
+			array_push($errors,"Password must include at least one lowercase letter!");
+		} 
+	}
 
 	if (count($errors) == 0 && isset($_POST['password']) && isset($_POST['new_password']) && isset($_POST['con_password']))
 	{
