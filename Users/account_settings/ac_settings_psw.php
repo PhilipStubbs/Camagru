@@ -91,6 +91,8 @@
 <html>
 <head>
 	<title>Password Settings</title>
+	<base href="http://localhost:8080/">
+	<!-- <base href="philipstubbs.co.za/"> -->
 	<link rel="stylesheet" type ="text/css" href="/Users/reg_style.css">
 	<link rel="stylesheet" type ="text/css" href="/template_style.css">
 </head>
@@ -100,7 +102,7 @@
 		<h2>Password Settings</h2>
 	</div>
 
-	<form method="post" action="ac_settings_psw.php" id="regform" style="width: 60%;">
+	<form method="post" action="/Users/account_settings/ac_settings_psw.php" id="regform" style="width: 60%;">
 		<?php include('../reg_errors.php'); ?>
 		<div class="input-group">
 				<label>Current Password</label>

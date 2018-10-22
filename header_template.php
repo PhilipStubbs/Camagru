@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<base href="http://localhost:8080/">
+	<!-- <base href="philipstubbs.co.za/"> -->
 	<link rel="stylesheet" type ="text/css" href="template_style.css">
 </head>
 <body>
@@ -11,7 +13,7 @@
 		<?php if (isset($_SESSION['username'])): ?>
 			<p class="Weloutbut" style="text-align: Center;">Welcome <strong><?php echo $_SESSION['firstname']; ?></strong></p>
 			
-			<a href="index.php?logout='1'" >
+			<a href="/index.php?logout='1'" >
 				<div id="headerbutton" style="float: right">
 					<p class="headerbut">Logout </p>
 				</div>

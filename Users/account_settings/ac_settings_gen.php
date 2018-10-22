@@ -53,6 +53,8 @@
 
 <html>
 <head>
+	<base href="http://localhost:8080/">
+		<!-- <base href="philipstubbs.co.za/"> -->
 	<title>General Account Settings</title>
 	<link rel="stylesheet" type ="text/css" href="/Users/reg_style.css">
 	<link rel="stylesheet" type ="text/css" href="/template_style.css">
@@ -63,23 +65,23 @@
 		<h2>General Account Settings</h2>
 	</div>
 
-	<form method="post" action="ac_settings_gen.php" id="regform" style="width: 60%;">
-	<div class="input-group">
-			<label>Username</label>
-			<input type="text" name="username" value="<?php echo $username; ?>">
-		</div>
+	<form method="post" action="/Users/account_settings/ac_settings_gen.php" id="regform" style="width: 60%;" accept-charset="ISO-8859-1">
 		<div class="input-group">
+			<label>Username</label>
+			<input type="text" name="username" value="<?php echo $username; ?>"  pattern="[^()/><\][\\\x22,;|]+">
+		</div>
+		<div class="input-group" >
 			<label>First name</label>
-			<input type="text" name="firstname" value="<?php echo $firstname; ?>">
+			<input type="text" name="firstname" value="<?php echo $firstname; ?>"  pattern="[^()/><\][\\\x22,;|]+" >
 		</div>
 		<div class="input-group">
 			<label>Surname</label>
-			<input type="text" name="surname" value="<?php echo $surname; ?>">
+			<input type="text" name="surname" value="<?php echo $surname; ?>"  pattern="[^()/><\][\\\x22,;|]+">
 		</div>
 
 		<div class="input-group">
 			<label>Email</label>
-			<input type="email" name="email" value="<?php echo $email; ?>">
+			<input type="email" name="email" value="<?php echo $email; ?>" pattern="[^()/><\][\\\x22,;|]+">
 		</div>
 
 		<div class="input-group">

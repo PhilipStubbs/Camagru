@@ -81,12 +81,12 @@
 						VALUES('$username', '$firstname', '$surname', '$email', '$password', '$confirmcode')";
 			$conn->exec($insert);
 
-			// $headers = "From: noreplay@philipstubbs.co.za"  . "\r\n"l
+			// $headers = "From: noreply@philipstubbs.co.za"  . "\r\n"l
 
 
-			$headers = "From: noreplay@philipstubbs.co.za\r\n";
-			$headers .= "Reply-To: noreplay@philipstubbs.co.za\r\n";
-			$headers .= "Return-Path: noreplay@philipstubbs.co.za\r\n";
+			$headers = "From: noreply@philipstubbs.co.za\r\n";
+			$headers .= "Reply-To: noreply@philipstubbs.co.za\r\n";
+			$headers .= "Return-Path: noreply@philipstubbs.co.za\r\n";
 			$headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
 			// $headers .= "BCC: hidden@example.com\r\n";
 
