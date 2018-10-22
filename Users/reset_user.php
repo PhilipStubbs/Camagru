@@ -93,6 +93,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<?php include_once("../base.php"); ?>
 	<title>Reset Password</title>
 	<link rel="stylesheet" type ="text/css" href="/Users/reg_style.css">
 	<link rel="stylesheet" type ="text/css" href="template_style.css">

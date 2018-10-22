@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <?php include('user_reg.php'); ?>
+<?php include_once("../base.php"); ?>
 
 <?php
 	include('connect_database.php');
 ?>
 
-
 <html>
 <head>
 	<title>Account Settings</title>
-	<link rel="stylesheet" type ="text/css" href="reg_style.css">
-	<link rel="stylesheet" type ="text/css" href="../template_style.css">
+	<link rel="stylesheet" type ="text/css" href="/Users/reg_style.css">
+	<link rel="stylesheet" type ="text/css" href="/template_style.css">
 </head>
 <body>
 	<?php include_once('../header_template.php'); ?>

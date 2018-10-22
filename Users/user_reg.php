@@ -123,7 +123,7 @@
 		{
 			array_push($errors, "Password is required");
 		}
-		 
+	
 		if (count($errors) == 0)
 		{
 

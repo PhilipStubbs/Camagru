@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <?php include('user_reg.php'); ?>
+<?php include_once("../base.php"); ?>
 <html>
 <head>
 	<title>Login</title>
-	<base href="http://localhost:8080/">
-	<!-- <base href="philipstubbs.co.za/"> -->
+	<?php include_once("../base.php"); ?>
 	<link rel="stylesheet" type ="text/css" href="/Users/reg_style.css">
 	<link rel="stylesheet" type ="text/css" href="/template_style.css">
 </head>

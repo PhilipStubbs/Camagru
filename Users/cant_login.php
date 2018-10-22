@@ -71,8 +71,8 @@
 
 <!DOCTYPE html>
 <?php include('user_reg.php'); ?>
-<base href="http://localhost:8080/">
-	<!-- <base href="philipstubbs.co.za/"> -->
+	<?php include_once("../base.php"); ?>
+
 <html>
 <head>
 	<title>Login</title>
@@ -100,7 +100,7 @@
 			Not yet a member? <a href="/Users/register.php">Sign up</a>
 		</p>
 	</form>
-	<?php include_once('footer_template.php'); ?>
+	<?php include_once('../footer_template.php'); ?>
 </body>
 
 </html>

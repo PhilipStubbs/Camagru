@@ -53,8 +53,7 @@
 
 <html>
 <head>
-	<base href="http://localhost:8080/">
-		<!-- <base href="philipstubbs.co.za/"> -->
+	<?php include_once("../../base.php"); ?>
 	<title>General Account Settings</title>
 	<link rel="stylesheet" type ="text/css" href="/Users/reg_style.css">
 	<link rel="stylesheet" type ="text/css" href="/template_style.css">

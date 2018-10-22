@@ -1,7 +1,6 @@
 <?php include('user_reg.php'); ?>
 <!DOCTYPE html>
-<base href="http://localhost:8080/">
-	<!-- <base href="philipstubbs.co.za/"> -->
+<?php include_once("../base.php"); ?>
 <script src='https://www.google.com/recaptcha/api.js'></script>
 <html>
 <head>
