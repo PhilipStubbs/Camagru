@@ -5,7 +5,7 @@
 <?php
 	if (!$_SESSION)
 		header('Location: ../../index.php');
-	include('connect_database.php');
+	include('../Users/connect_database.php');
 ?>
 
 <html>
@@ -26,7 +26,7 @@
 				<p>Webcam</p>
 			</div>
 		</a>
-		<a href="/Content/upload_post.php" style="text-decoration: none;" >
+		<a href="/Content/upload_image.php" style="text-decoration: none;" >
 			<div class="ac_setting_btn">
 				<p>Upload Image</p>
 			</div>
