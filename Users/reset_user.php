@@ -126,11 +126,11 @@
 		<?php include('reg_errors.php'); ?>
 		<div class="input-group">
 			<label>New Password</label>
-			<input type="password" name="new_password" pattern="[^()/><\][\\\x22,;|]+">
+			<input type="password" name="new_password" pattern="[^()/><\][\\\x22,;|]+" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{4,}[^()/><\][\\\x22,;|]+" title="Password must contain at least one number and one uppercase and lowercase letter, and at least 4 or more characters">
 		</div>
 		<div class="input-group">
 			<label>Confirm Password</label>
-			<input type="password" name="con_password" pattern="[^()/><\][\\\x22,;|]+">
+			<input type="password" name="con_password" pattern="[^()/><\][\\\x22,;|]+" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{4,}[^()/><\][\\\x22,;|]+" title="Password must contain at least one number and one uppercase and lowercase letter, and at least 4 or more characters">
 		</div>
 		<div class="input-group">
 			<button type="submit" name="reset" class="btn">Reset</button>

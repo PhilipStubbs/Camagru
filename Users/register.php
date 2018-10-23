@@ -34,11 +34,11 @@
 		</div>
 		<div class="input-group">
 			<label>Password</label>
-			<input type="password" name="password_1"  pattern="[^()/><\][\\\x22,;|]+">
+			<input type="password" name="password_1" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{4,}[^()/><\][\\\x22,;|]+" title="Password must contain at least one number and one uppercase and lowercase letter, and at least 4 or more characters">
 		</div>
 		<div class="input-group">
 			<label>Confirm Password</label>
-			<input type="password" name="password_2"  pattern="[^()/><\][\\\x22,;|]+">
+			<input type="password" name="password_2" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{4,}[^()/><\][\\\x22,;|]+" title="Password must contain at least one number and one uppercase and lowercase letter, and at least 4 or more characters">
 		</div>
 		<div class="g-recaptcha" data-sitekey="6LfatnUUAAAAANLQGyIaJpbHz-1RRQtVLVFws4Lj"></div>
 		<div class="input-group">

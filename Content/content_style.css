@@ -1,0 +1,45 @@
+.sidemenu
+{
+	background: blue;
+	width: 20%;
+	height: 700px;
+}
+
+.mainview
+{
+	float: right;
+	width: 70%;
+	height: 50%;
+	background: grey;
+}
+
+.postit_btn
+{
+	float: right;
+	font-size: 20px;
+	color: white;
+	background: rgb(73, 101, 138);
+	border: none;
+	border-radius: 5px;
+	margin: 0px 0px 10px 0px;
+	display: block;
+	text-align: center;
+	padding: 5px;
+	color: white;
+	border: none;
+	border-radius: 2px;
+	top: 180px;
+	position: absolute;
+}
+
+.postit_btn:hover {
+	background-color: #B0C4DE;
+	color: black;
+}
+
+.postit_btn:active {
+	color: black;
+	background-color: #B0C4DE;
+	box-shadow: 0 5px #666;
+	/* transform: translateY(1px); */
+}

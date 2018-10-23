@@ -10,10 +10,19 @@
 </head>
 <body>
 	<?php include_once('header_template.php'); ?>
-	<div class="header">
+	<div class="header" style="width: 60%">
+	
+		
 		<h2>Home Page</h2>
+		<?php if (isset($_SESSION['username'])): ?>
+			<a href="/Content/new_post.php">
+			<div class="addcontent_btn">
+				<h3>New Post</h3>
+			</div>
+		</a>	
+	<?php endif ?>
 	</div>
-	<div class="content">
+	<div class="content" style="width: 60%">
 		<?php if (isset($_SESSION['message'])) : ?>
 			<div class="error success">
 				<h3> 
@@ -41,11 +50,8 @@
 </html>
 
 
-	<!-- <?php if (isset($_SESSION['username'])): ?>
-			<p>Welcome <strong><?php echo $_SESSION['firstname']; ?></strong> <br />
-			<a href="index.php?logout='1'" style="color: red;">Logout</a></p>
-			<?php endif ?>
-		<?php if (!isset($_SESSION['username'])): ?>
-			<p><a href="./Users/login.php?" >Login</a></p>
-			<p><a href="./Users/register.php?">Sign up</a></p>
-		<?php endif ?> -->
+
+
+
+
+		

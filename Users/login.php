@@ -22,7 +22,7 @@
 		</div>
 		<div class="input-group">
 			<label>Password</label>
-			<input type="password" name="password"  pattern="[^()/><\][\\\x22,;|]+">
+			<input type="password" name="password"  pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{4,}[^()/><\][\\\x22,;|]+" title="Password must contain at least one number and one uppercase and lowercase letter, and at least 4 or more characters">
 		</div>
 		<div class="input-group">
 			<button type="submit" name="login" class="btn">Login</button>
