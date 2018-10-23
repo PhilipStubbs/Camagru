@@ -15,7 +15,7 @@
 		
 		<h2>Home Page</h2>
 		<?php if (isset($_SESSION['username'])): ?>
-			<a href="/Content/new_post.php">
+			<a href="/Content/select_post_type.php">
 			<div class="addcontent_btn">
 				<h3>New Post</h3>
 			</div>
