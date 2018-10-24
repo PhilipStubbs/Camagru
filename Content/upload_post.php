@@ -47,15 +47,36 @@ if (!$_SESSION)
 				</h3>
 			</div>
 		<?php endif ?>
-		<div class="mainview">
-	
-		<?php include_once("decode_image.php"); ?>
+		<div class="mainview" id="mainview">
+			
+			<?php include_once("decode_image.php"); ?>
+			<!-- <img class="overlayImage" src="Stickers/baboon.png"> -->
 		</div>
 		<div class="sidemenu">
-			<p>test</p>
+			<div>
+				<img class="thumbnail" src="Stickers/baboon.png">
+				<input type="submit" id="submit" onclick="addSticker('Stickers/baboon.png')" value="Add">
+			</div>
+			<div>
+				<img class="thumbnail" src="Stickers/camel.png">
+				<input type="submit" id="submit" onclick="addSticker('Stickers/camel.png')" value="Add">
+			</div>
+			<div>
+				<img class="thumbnail" src="Stickers/dog.png">
+				<input type="submit" id="submit" onclick="addSticker('Stickers/dog.png')" value="Add">
+			</div>
+			<div>
+				<img class="thumbnail" src="Stickers/duck.png">
+				<input type="submit" id="submit" onclick="addSticker('Stickers/duck.png')" value="Add">
+			</div>
+			<div>
+				<img class="thumbnail" src="Stickers/fish.png">
+				<input type="submit" id="submit" onclick="addSticker('Stickers/fish.png')" value="Add">
+			</div>
+			
 		</div>
 		<div class="bottommenu">
-			<p>test</p>
+			
 		</div>
 		
 	</div>
