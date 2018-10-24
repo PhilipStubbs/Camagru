@@ -35,10 +35,18 @@ if (isset($_POST['uploadsubmit']))
 						$fileDest = 'upload_test/'.$fileNameNew;
 						// move_uploaded_file($fileTmpName, $fileDest);
 						$imagedata = file_get_contents($fileTmpName);
+						
 			
 						$base64 = base64_encode($imagedata);
-						$_SESSION['tmp_image'] = $base64;
+						// $_SESSION['image'] = $fileTmpName.".".$fileActualExt;
+						$_SESSION['image_tmp'] = $base64;
+						$_SESSION['image_type'] = strtolower($fileType);
 						header("Location: /Content/upload_post.php");
+
+
+
+		// 				$im = file_get_contents('filename.gif');
+        // 				$imdata = base64_encode($im); 
 					}
 					else
 					{

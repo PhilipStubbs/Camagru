@@ -48,8 +48,8 @@ if (!$_SESSION)
 			</div>
 		<?php endif ?>
 		<div class="mainview">
-		<!-- <center><video id="video()" width="640" height="480" autoplay></video></center> -->
-			<p>test</p>
+	
+		<?php include_once("decode_image.php"); ?>
 		</div>
 		<div class="sidemenu">
 			<p>test</p>
