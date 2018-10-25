@@ -14,7 +14,11 @@
 	{
 		$info = $tmp;
 		$data = $info['image'];
-		$ret = "<img style='width: 70%; height: 100%; object-fit: contain' alt=Embedded Image src=\"data:".$type.";base64,".$data."\" />";
+		$ret = " <div style='width: 50%; height: 100%'>
+					<img style='width: 50%; height: 100%; object-fit: contain' alt=Embedded Image src=\"data:".$type.";base64,".$data."\" />
+					<input type='text' style='width: 50%; height: 100%' >
+				</div>
+				";
 		echo $ret;
 	}
 	// echo (count($res));
