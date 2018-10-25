@@ -2,6 +2,12 @@
 <?php include('./Users/server.php'); ?>
 <?php include_once("base.php"); ?>
 
+<?php
+	$query = $conn->prepare("SELECT * FROM $dbname.images");
+	$query->execute();
+	$res = $query->fetchAll();
+	echo (count($res));
+?>
 <html>
 
 <head>
