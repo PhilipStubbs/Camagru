@@ -3,7 +3,6 @@
 
 if (isset($_POST['uploadsubmit']))
 {
-	echo "1";
 	if (isset($_FILES['file']['name']) && !empty($_FILES['file']['name']))
 	{
 		$file = $_FILES['file'];
@@ -24,7 +23,6 @@ if (isset($_POST['uploadsubmit']))
 		{
 			if ($sizeCheck)
 			{
-				echo "3";
 				if ($fileError === 0)
 				{
 					if ($fileSize < 5000000)
@@ -42,11 +40,6 @@ if (isset($_POST['uploadsubmit']))
 						$_SESSION['image_tmp'] = $base64;
 						$_SESSION['image_type'] = strtolower($fileType);
 						header("Location: /Content/upload_post.php");
-
-
-
-		// 				$im = file_get_contents('filename.gif');
-        // 				$imdata = base64_encode($im); 
 					}
 					else
 					{

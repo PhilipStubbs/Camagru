@@ -18,15 +18,12 @@ if (!$_SESSION)
 	<?php include_once('../header_template.php'); ?>
 	<div class="header" style="width: 60%">
 	
-		
 		<h2>New Post</h2>
-		<a href="index.php">
-			<div class="postit_btn" >
-				<h3>Post!</h3>
-			</div>
-		</a>
+			<form method="post" action="image_to_db.php">
+					<button type="submit" name="submit" class="postbtn">Submit Post</button>
+			</form>
 	</div>
-	<div class="content" style="width: 60%; height: 100%">
+	<div class="body">
 		<?php if (isset($_SESSION['message'])) : ?>
 			<div class="error success">
 				<h3> 

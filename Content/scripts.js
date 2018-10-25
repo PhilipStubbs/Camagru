@@ -25,8 +25,6 @@ function addSticker(loc)
 	sticker.setAttribute("alt", loc);
 	sticker.setAttribute("class", 'overlayImage');
 	mainview.insertBefore(sticker, mainview.firstChild);
-	var	savetodb = "<?php $_SESSION['sticker']="+loc+"|";
-	alert(savetodb);
 }
 
 
