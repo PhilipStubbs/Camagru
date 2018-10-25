@@ -1,17 +1,11 @@
 <!DOCTYPE html>
 <?php include('./Users/server.php'); ?>
 <?php include_once("base.php"); ?>
-
-<?php
-	$query = $conn->prepare("SELECT * FROM $dbname.images");
-	$query->execute();
-	$res = $query->fetchAll();
-	echo (count($res));
-?>
 <html>
 
 <head>
 	<title>Login</title>
+	<script src="index_scripts.js"></script>
 	<link rel="stylesheet" type ="text/css" href="./Users/reg_style.css">
 </head>
 <body>
@@ -28,7 +22,7 @@
 		</a>	
 	<?php endif ?>
 	</div>
-	<div class="content" style="width: 60%">
+	<div class="content" style="width: 60%" id="homepage">
 		<?php if (isset($_SESSION['message'])) : ?>
 			<div class="error success">
 				<h3> 
@@ -49,7 +43,7 @@
 				</h3>
 			</div>
 		<?php endif ?>
-		
+		<?php include_once('populate_homepage.php')?>
 	</div>
 	<?php include_once('footer_template.php'); ?>
 </body>
