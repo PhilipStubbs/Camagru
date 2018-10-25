@@ -19,7 +19,7 @@ if (!$_SESSION)
 	<div class="header" style="width: 60%">
 	
 		<h2>New Post</h2>
-			<form method="post" action="image_to_db.php">
+			<form method="post" action="/Content/image_to_db.php">
 					<button type="submit" name="submit" class="postbtn">Submit Post</button>
 			</form>
 	</div>

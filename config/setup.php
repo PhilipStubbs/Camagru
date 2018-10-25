@@ -17,6 +17,16 @@ if (isset($_POST['value']) && $_POST['value'] == $dbpassword)
 		confirmed BIT DEFAULT 0,
 		confirmcode VARCHAR (1024))";
 
+	$images = "CREATE TABLE $dbname.images (
+		id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+		image LONGTEXT,
+		username VARCHAR (255),
+		baboon BIT DEFAULT 0,
+		camel BIT DEFAULT 0,
+		dog BIT DEFAULT 0,
+		duck BIT DEFAULT 0,
+		fish BIT DEFAULT 0)";
+
 	$conn->exec($deleteDB);
 
 
@@ -25,7 +35,8 @@ if (isset($_POST['value']) && $_POST['value'] == $dbpassword)
 		echo "Database created successfully\n ".rand(0,100)."<BR /> ";
 		$conn->exec($users);
 		echo "User Table created successfully\n <BR />";
-		
+		$conn->exec($images);
+		echo "image Table created successfully\n <BR />";
 	}
 	else
 	{

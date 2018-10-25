@@ -51,7 +51,6 @@
 		$emailcheck = $conn->prepare("SELECT * FROM $dbname.users WHERE email = :eml");
 		$emailcheck->execute(["eml"=>$email]);
 		$result_2 = $emailcheck->fetchAll();
-// ASDasdASDASDasdasd123456
 
 		if (count($result_1) > 0)
 			array_push($errors, "'$username' already in use");
@@ -94,8 +93,6 @@
 
 
 			$headers = "From: noreply@philipstubbs.co.za\r\n";
-			$headers .= "Reply-To: noreply@philipstubbs.co.za\r\n";
-			$headers .= "Return-Path: noreply@philipstubbs.co.za\r\n";
 			$headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
 			// $headers .= "BCC: hidden@example.com\r\n";
 
