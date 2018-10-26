@@ -27,5 +27,15 @@ function addSticker(loc)
 	mainview.insertBefore(sticker, mainview.firstChild);
 }
 
+window.onload = function()
+{
+var canvas = document.getElementById("myCanvas");
+var ctx = canvas.getContext('2d');
+
+var image = document.getElementById("theimg");
+ctx.drawImage(image,0,0);
+}
+
+
 
 // https://www.youtube.com/watch?v=ejN-oAw9vC0

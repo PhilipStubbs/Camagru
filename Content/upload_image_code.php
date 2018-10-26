@@ -1,6 +1,6 @@
 <?php include('../Users/server.php'); ?>
 <?php
-
+	include('merge_picture.php');
 if (isset($_POST['uploadsubmit']))
 {
 	if (isset($_FILES['file']['name']) && !empty($_FILES['file']['name']))
@@ -27,16 +27,10 @@ if (isset($_POST['uploadsubmit']))
 				{
 					if ($fileSize < 5000000)
 					{
-						$fileNameNew = uniqid('', true).".".$fileActualExt;
-						
-
-						$fileDest = 'upload_test/'.$fileNameNew;
-						// move_uploaded_file($fileTmpName, $fileDest);
-						$imagedata = file_get_contents($fileTmpName);
-						
-			
+						// merge_picture($fileTmpName, "../Stickers/baboon.png", '../tmp.jpg', 0 , 0);
+						test($fileTmpName, "../Stickers/baboon.png", '../tmp.jpg');
+						$imagedata = file_get_contents('../tmp.jpg');
 						$base64 = base64_encode($imagedata);
-						// $_SESSION['image'] = $fileTmpName.".".$fileActualExt;
 						$_SESSION['image_tmp'] = $base64;
 						$_SESSION['image_type'] = strtolower($fileType);
 						header("Location: /Content/upload_post.php");

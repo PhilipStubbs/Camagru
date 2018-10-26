@@ -15,17 +15,27 @@ if (isset($_POST['value']) && $_POST['value'] == $dbpassword)
 		email VARCHAR (255) UNIQUE,
 		password VARCHAR (1024),
 		confirmed BIT DEFAULT 0,
-		confirmcode VARCHAR (1024))";
+		confirmcode VARCHAR (1024),
+		date TIMESTAMP)";
 
 	$images = "CREATE TABLE $dbname.images (
 		id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
 		image LONGTEXT,
+		likes INT DEFAULT 0,
 		username VARCHAR (255),
 		baboon BIT DEFAULT 0,
 		camel BIT DEFAULT 0,
 		dog BIT DEFAULT 0,
 		duck BIT DEFAULT 0,
-		fish BIT DEFAULT 0)";
+		fish BIT DEFAULT 0,
+		date TIMESTAMP)";
+
+	$comments = "CREATE TABLE $dbname.comments (
+		id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+		image_id INT NOT NULL,
+		comment LONGTEXT,
+		username VARCHAR (255),
+		date TIMESTAMP)";
 
 	$conn->exec($deleteDB);
 
@@ -37,6 +47,8 @@ if (isset($_POST['value']) && $_POST['value'] == $dbpassword)
 		echo "User Table created successfully\n <BR />";
 		$conn->exec($images);
 		echo "image Table created successfully\n <BR />";
+		$conn->exec($comments);
+		echo "comments Table created successfully\n <BR />";
 	}
 	else
 	{
