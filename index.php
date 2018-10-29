@@ -4,7 +4,7 @@
 <html>
 
 <head>
-	<title>Login</title>
+	<title>Camagru</title>
 	<script src="index_scripts.js"></script>
 	<link rel="stylesheet" type ="text/css" href="./Users/reg_style.css">
 </head>
