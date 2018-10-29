@@ -10,7 +10,7 @@
 </head>
 <body>
 	<?php include_once('header_template.php'); ?>
-	<div class="header" style="width: 60%">
+	<div class="header" style="width: 90%">
 	
 		
 		<h2>Home Page</h2>
@@ -22,7 +22,7 @@
 		</a>	
 	<?php endif ?>
 	</div>
-	<div class="content" style="width: 60%" id="homepage">
+	<div class="content" style="width: 90%" id="homepage">
 		<?php if (isset($_SESSION['message'])) : ?>
 			<div class="error success">
 				<h3> 
@@ -44,6 +44,14 @@
 			</div>
 		<?php endif ?>
 		<?php include_once('populate_homepage.php')?>
+		<form method="post" action="index.php" >
+			<div >
+				<button type="submit" name="prev_page" class="btn">Previous Page</button>
+				<button type="submit" name="next_page" class="btn">Next Page</button>
+			</div>
+			
+		</form>
+
 	</div>
 	<?php include_once('footer_template.php'); ?>
 </body>

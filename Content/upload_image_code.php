@@ -28,8 +28,8 @@ if (isset($_POST['uploadsubmit']))
 					if ($fileSize < 5000000)
 					{
 						// merge_picture($fileTmpName, "../Stickers/baboon.png", '../tmp.jpg', 0 , 0);
-						test($fileTmpName, "../Stickers/baboon.png", '../tmp.jpg');
-						$imagedata = file_get_contents('../tmp.jpg');
+						// test($fileTmpName, "../Stickers/baboon.png", '../tmp.jpg');
+						$imagedata = file_get_contents($fileTmpName);
 						$base64 = base64_encode($imagedata);
 						$_SESSION['image_tmp'] = $base64;
 						$_SESSION['image_type'] = strtolower($fileType);

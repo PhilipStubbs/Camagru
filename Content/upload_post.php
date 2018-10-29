@@ -1,8 +1,6 @@
 <!DOCTYPE html>
-<?php include('../Users/server.php'); ?>
+
 <?php include_once("../base.php"); 
-if (!$_SESSION)
-	header('Location: ../../index.php');
 ?>
 
 <html>
@@ -93,3 +91,7 @@ if (!$_SESSION)
 </body>
 </html>
 
+<?php
+if (!$_SESSION)
+	header('Location: ../../index.php');
+?>

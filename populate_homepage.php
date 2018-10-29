@@ -1,32 +1,46 @@
 <?php
-	if(isset($_SESSION['date']))
+	if (isset($_POST['next_page']))
 	{
-		$prevdate = $_SESSION['date'];
-		$query = $conn->prepare("SELECT * FROM $dbname.images WHERE date > $prevdate ORDER BY date DESC");
-		$query->execute();
-		$res = $query->fetchAll();
-		$tmp = $query->fetch();
-		$_SESSION['date'] = $tmp['date'];
+		if(isset($_SESSION['date']))
+		{
+			$prevdate = $_SESSION['date'];
+			$query = $conn->prepare("SELECT * FROM $dbname.images WHERE date < '$prevdate' ORDER BY date DESC LIMIT 5");
+			$query->execute();
+			$res = $query->fetchAll();
+			if (count($res) == 5)
+				$_SESSION['date'] = $res[4]['date'];
+		}
+	}
+	else if (isset($_POST['prev_page']))
+	{
+		if(isset($_SESSION['date']))
+		{
+			$prevdate = $_SESSION['date'];
+			$query = $conn->prepare("SELECT * FROM $dbname.images WHERE date >= '$prevdate' ORDER BY date DESC LIMIT 5");
+			$query->execute();
+			$res = $query->fetchAll();
+			if (count($res) == 5)
+				$_SESSION['date'] = $res[4]['date'];
+		}
 	}
 	else
 	{
-		$query = $conn->prepare("SELECT * FROM $dbname.images ORDER BY date DESC");
+		$query = $conn->prepare("SELECT * FROM $dbname.images ORDER BY date DESC LIMIT 5");
 		$query->execute();
 		$res = $query->fetchAll();
-		$tmp = $query->fetch();
-		// $_SESSION['date'] = $tmp['date'];
+		if ([$res[4]['date']] != NULL)
+		{
+			$_SESSION['date'] = $res[4]['date'];
+		}
 	}
-
 
 	$type = "image/jpg";
 	foreach ($res as $tmp)
 	{
 		$info = $tmp;
 		$data = $info['image'];
-		$ret = " <div style='width: 40%; height: 100%'>
-					<img style='width: 40%; height: 50%; object-fit: contain' alt=Embedded Image src=\"data:".$type.";base64,".$data."\" />
-					<input type='text' style='width: 50%; height: 100%' >
-				</div>
+		$ret = "
+					<img style='width: 19%; object-fit: contain' alt=Embedded Image src=\"data:".$type.";base64,".$data."\" />
 				";
 		echo $ret;
 	}
