@@ -44,24 +44,29 @@ include_once("../Users/server.php");
 				</h3>
 			</div>
 		<?php endif ?>
+		
 		<div class="mainview" id="mainview">
-			
-		<canvas id="Mycanvas" class="maincanvas">
+			<?php include_once("decode_image.php") ?>
+			<canvas id="myCanvas" ></canvas>
 
-		</canvas>
-		<script>
-			window.addEventListener("load", draw);
-			function draw() 
-			{
-				var ctx = document.querySelector('#Mycanvas').getContext('2d');
-				var img1 = new Image();
-				img1.onload = function() 
-				{
-					ctx.drawImage(img1, 0, 0);
-				}
-				img1.src = '<?php include('image_source.php'); ?>';
-			}
-		</script>
+			<script>
+				var c = document.getElementById("myCanvas");
+				var ctx = c.getContext("2d");
+				var img = document.getElementById("userimage");
+				c.style.width  = '70%';
+				c.style.height = '100%';
+				// c.setAttribute("width", '70%');
+		
+				c.setAttribute("object-fit", 'contain');
+				c.width = img.width;
+				c.height = img.height;
+
+				var hRatio = c.width / img.width;
+				var vRatio = c.height / img.height;
+				var ratio  = Math.min ( hRatio, vRatio );
+				ctx.drawImage(img, 0,0, img.width, img.height, 0,0,img.width*ratio, img.height*ratio);
+
+			</script>
 
 
 		</div>
