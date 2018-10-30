@@ -54,7 +54,7 @@
 		<div id="myModal" class="modal">
 			<span class="close">&times;</span>
 			<img class="modal-content" id="img01">
-			<div id="caption"></div>
+			<div id="caption">TEST</div>
 		</div>
 		<script>
 			// Get the modal
