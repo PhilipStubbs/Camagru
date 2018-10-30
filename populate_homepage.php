@@ -39,9 +39,12 @@
 	{
 		$info = $tmp;
 		$data = $info['image'];
+		$id = "id_".$info['id'];
+		echo $id ;
 		$ret = "
-					<img style='width: 19%; object-fit: contain' alt=Embedded Image src=\"data:".$type.";base64,".$data."\" />
+					<img id='$id' class='userimage' style='width: 19%; object-fit: contain' onclick='comment_box(this.id)' alt=Embedded Image src=\"data:".$type.";base64,".$data."\" />
 				";
 		echo $ret;
 	}
+	
 ?>
