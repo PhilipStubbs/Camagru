@@ -46,7 +46,7 @@
 		<?php include_once('populate_homepage.php')?>
 		<form method="post" action="index.php" >
 			<div >
-				<button type="submit" name="prev_page" class="btn">Previous Page</button>
+				<button type="submit" name="prev_page" class="btn">Starting Page</button>
 				<button type="submit" name="next_page" class="btn">Next Page</button>
 			</div>
 			
