@@ -1,3 +1,6 @@
+
+
+
 <!DOCTYPE html>
 <?php include('./Users/server.php'); ?>
 <?php include_once("base.php"); ?>
@@ -5,7 +8,8 @@
 
 <head>
 	<title>Camagru</title>
-	<script src="index_scripts.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script language="JavaScript" type="text/javascript" src="index_scripts.js"></script>
 	<link rel="stylesheet" type ="text/css" href="./Users/reg_style.css">
 </head>
 <body>
@@ -54,52 +58,49 @@
 	
 		<div id="myModal" class="modal">
 				
-				
 				<span class="close">&times;</span>
-				<img class="modal-content" id="img01">
+				<img class="modal-content" id="img01" style="max-width: 50%;">
 				<?php if (isset($_SESSION['username'])) : ?>
-					<form>
+					
 					<center>
-						<input type=text>
-						<button class="btn" >Comment</button>
+						<input id="the_comment" type=text>
+						<button  class="btn" onclick="Ajaxcomment()">Post Comment</button>
 						
-						<button class="btn" onclick="like()" >Like</button>
+						<button class="btn" onclick="Ajaxlike()" >Like</button>
 						<br />
 					</center>
 					
-					</form>
 				<?php endif ?>
-				<div id="caption"></div>
+				<p id="caption"></p>
 			
 		</div>
 		<script>
-			function like()
-			{
-
-			}
 			// Get the modal
 			function comment_box(clickedID, likes)
-			{
-				var modal = document.getElementById('myModal');
+{
+			var modal = document.getElementById('myModal');
 
-				// Get the image and insert it inside the modal - use its "alt" text as a caption
-				var img = document.getElementById(clickedID);
-				var modalImg = document.getElementById("img01");
-				var captionText = document.getElementById("caption");
-				img.onclick = function(){
-					modal.style.display = "block";
-					modalImg.src = this.src;
-					captionText.innerHTML = "Likes : "+ likes + "<br />" + this.alt;
-				}
-
-				// Get the <span> element that closes the modal
-				var span = document.getElementsByClassName("close")[0];
-
-				// When the user clicks on <span> (x), close the modal
-				span.onclick = function() { 
-					modal.style.display = "none";
-				}
+			// Get the image and insert it inside the modal - use its "alt" text as a caption
+			var img = document.getElementById(clickedID);
+			var modalImg = document.getElementById("img01");
+			var captionText = document.getElementById("caption");
+			img.onclick = function(){
+				modal.style.display = "block";
+				modalImg.src = this.src;
+				modalImg.alt = this.id;
+				captionText.innerHTML = "Likes : "+ likes + "<br />" + this.alt;
 			}
+
+			// Get the <span> element that closes the modal
+			var span = document.getElementsByClassName("close")[0];
+
+
+
+			// When the user clicks on <span> (x), close the modal
+			span.onclick = function() { 
+				modal.style.display = "none";
+			}
+		}
 		</script>
 
 

@@ -16,7 +16,7 @@ if (isset($_POST['value']) && $_POST['value'] == $dbpassword)
 		password VARCHAR (1024),
 		confirmed BIT DEFAULT 0,
 		confirmcode VARCHAR (1024),
-		date TIMESTAMP)";
+		date TIMESTAMP NOT NULL default CURRENT_TIMESTAMP)";
 
 	$images = "CREATE TABLE $dbname.images (
 		id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
@@ -28,14 +28,14 @@ if (isset($_POST['value']) && $_POST['value'] == $dbpassword)
 		dog BIT DEFAULT 0,
 		duck BIT DEFAULT 0,
 		fish BIT DEFAULT 0,
-		date TIMESTAMP)";
+		date TIMESTAMP NOT NULL default CURRENT_TIMESTAMP)";
 
 	$comments = "CREATE TABLE $dbname.comments (
 		comment_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
 		image_id INT NOT NULL,
 		comment LONGTEXT,
 		comment_user VARCHAR (255),
-		comment_date TIMESTAMP)";
+		comment_date TIMESTAMP NOT NULL default CURRENT_TIMESTAMP)";
 
 	$conn->exec($deleteDB);
 
