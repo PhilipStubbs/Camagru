@@ -31,11 +31,11 @@ if (isset($_POST['value']) && $_POST['value'] == $dbpassword)
 		date TIMESTAMP)";
 
 	$comments = "CREATE TABLE $dbname.comments (
-		id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+		comment_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
 		image_id INT NOT NULL,
 		comment LONGTEXT,
-		username VARCHAR (255),
-		date TIMESTAMP)";
+		comment_user VARCHAR (255),
+		comment_date TIMESTAMP)";
 
 	$conn->exec($deleteDB);
 

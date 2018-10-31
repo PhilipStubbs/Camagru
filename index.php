@@ -51,14 +51,30 @@
 			</div>
 			
 		</form>
+	
 		<div id="myModal" class="modal">
-			<span class="close">&times;</span>
-			<img class="modal-content" id="img01">
-			<div id="caption">TEST</div>
+				
+				
+				<span class="close">&times;</span>
+				<img class="modal-content" id="img01">
+				<?php if (isset($_SESSION['username'])) : ?>
+					<form>
+					<center>
+						<input type=text>
+						<button class="btn" >Comment</button>
+						
+						<button class="btn" >Like</button>
+						<br />
+					</center>
+					
+					</form>
+				<?php endif ?>
+				<div id="caption"></div>
+			
 		</div>
 		<script>
 			// Get the modal
-			function comment_box(clickedID)
+			function comment_box(clickedID, likes)
 			{
 				var modal = document.getElementById('myModal');
 
@@ -69,7 +85,7 @@
 				img.onclick = function(){
 					modal.style.display = "block";
 					modalImg.src = this.src;
-					captionText.innerHTML = this.alt;
+					captionText.innerHTML = "Likes : "+ likes + "<br />" + this.alt;
 				}
 
 				// Get the <span> element that closes the modal
