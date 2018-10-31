@@ -63,7 +63,7 @@
 						<input type=text>
 						<button class="btn" >Comment</button>
 						
-						<button class="btn" >Like</button>
+						<button class="btn" onclick="like()" >Like</button>
 						<br />
 					</center>
 					
@@ -73,6 +73,10 @@
 			
 		</div>
 		<script>
+			function like()
+			{
+
+			}
 			// Get the modal
 			function comment_box(clickedID, likes)
 			{

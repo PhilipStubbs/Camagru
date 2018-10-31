@@ -1,7 +1,7 @@
 
 function decodeimage(data)
 {
-	$ret = "<img style='width: 70%; height: 100%; object-fit: contain' alt=Embedded Image src=\"data:"+type+";base64,"+data+"\" />";
+	ret = "<img style='width: 70%; height: 100%; object-fit: contain' alt=Embedded Image src=\"data:"+type+";base64,"+data+"\" />";
 	src = "data:image/jpeg;base64,"+data+"\"";
 	var post = document.createElement('img');
 
