@@ -9,7 +9,7 @@
 			$query->execute();
 			$res = $query->fetchAll();
 			if (count($res) == 10)
-				$_SESSION['date'] = $res[4]['date'];
+				$_SESSION['date'] = $res[9]['date'];
 		}
 	}
 	else if (isset($_POST['prev_page']))
@@ -22,7 +22,7 @@
 			$query->execute();
 			$res = $query->fetchAll();
 			if (count($res) == 10)
-				$_SESSION['date'] = $res[4]['date'];
+				$_SESSION['date'] = $res[9]['date'];
 		}
 	}
 	else
@@ -31,9 +31,9 @@
 		$query = $conn->prepare("SELECT * FROM $dbname.images ORDER BY images.date DESC LIMIT 10");
 		$query->execute();
 		$res = $query->fetchAll();
-		if ([$res[4]['date']] != NULL)
+		if ([$res[9]['date']] != NULL)
 		{
-			$_SESSION['date'] = $res[4]['date'];
+			$_SESSION['date'] = $res[9]['date'];
 		}
 	}
 

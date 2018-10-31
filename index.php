@@ -59,7 +59,7 @@
 		<div id="myModal" class="modal">
 				
 				<span class="close">&times;</span>
-				<img class="modal-content" id="img01" style="max-width: 50%;">
+				<img class="modal-content" id="img01" style="max-width: 20%;">
 				<?php if (isset($_SESSION['username'])) : ?>
 					
 					<center>
@@ -71,7 +71,7 @@
 					</center>
 					
 				<?php endif ?>
-				<p id="caption"></p>
+				<p id="caption" style="padding: auto;"></p>
 			
 		</div>
 		<script>
