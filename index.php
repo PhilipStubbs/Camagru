@@ -57,19 +57,19 @@
 		</form>
 	
 		<div id="myModal" class="modal">
-				
+				<form>
+					<button class="btn" onclick="Ajaxdelete()">Delete Post as <?php echo $_SESSION['username']?>?</button>
+				</form>
 				<span class="close">&times;</span>
 				<img class="modal-content" id="img01" style="max-width: 20%;">
 				<?php if (isset($_SESSION['username'])) : ?>
-					
 					<center>
-						<input id="the_comment" type=text>
+						<input id="the_comment" type=text pattern="[^()/><\][\\\x22,;|]+">
 						<button  class="btn" onclick="Ajaxcomment()">Post Comment</button>
 						
 						<button class="btn" onclick="Ajaxlike()" >Like</button>
 						<br />
 					</center>
-					
 				<?php endif ?>
 				<p id="caption" style="padding: auto;"></p>
 			

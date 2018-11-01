@@ -24,7 +24,7 @@ function Ajaxcomment(){
 	$.ajax({
 	
 			type:"POST",//or GET
-			url:'./Content/like_and_comment.php',
+			url:'./Content/like_comment_delete.php',
 							   //  (or whatever your url is)
 			data:{'action':'comment',
 					'image_id':modalImg.alt,
@@ -48,7 +48,7 @@ function Ajaxlike(){
 	$.ajax({
 	
 			type:"POST",//or GET
-			url:'./Content/like_and_comment.php',
+			url:'./Content/like_comment_delete.php',
 							   //  (or whatever your url is)
 			data:{'action':'like',
 					'image_id':modalImg.alt},
@@ -63,16 +63,28 @@ function Ajaxlike(){
 	
 	}
 
-// function Ajaxlike() {
-// 	$.ajax({
-// 		 type: "POST",
-// 		 url: 'Content/like.php',
-// 		 data:{action:'like'},
-// 		 success:function(html) {
-// 		   alert(html);
-// 		 }
+	function Ajaxdelete(){
 
-// 	});
-// }
+		//make an ajax call and get status value using the same 'id'
+		var modalImg = document.getElementById("img01");
+		// console.log(src);
+		$.ajax({
+		
+				type:"POST",//or GET
+				url:'./Content/like_comment_delete.php',
+								   //  (or whatever your url is)
+				data:{'action':'delete',
+						'image_id':modalImg.alt},
+				//can send multipledata like {data1:var1,data2:var2,data3:var3
+				//can use dataType:'text/html' or 'json' if response type expected 
+				success:function(responsedata){
+					   // process on data
+					   alert("Liked!");
+		
+				}
+			 })
+		
+		}
+	
 
 // https://www.youtube.com/watch?v=ejN-oAw9vC0

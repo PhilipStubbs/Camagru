@@ -56,10 +56,11 @@
 				$comments .= "<strong>". $comtmp['comment_user']."</strong>" ." says : ". $comtmp['comment']." <br />";
 			}
 		}
+		$poster = "<strong><i><h3> Posted By : ".$info['username']."</h3></i></strong> <br />";
 		$id = "id_".$info['id'];
 		$likes = $info['likes'];
 		$ret = "
-					<img id='$id' class='userimage' style='width: 19%; object-fit: contain' onclick='comment_box(this.id , $likes)' alt='$comments' Image src=\"data:".$type.";base64,".$data."\" />
+					<img id='$id' class='userimage' style='width: 19%; object-fit: contain' onclick='comment_box(this.id , $likes)' alt='$poster$comments' Image src=\"data:".$type.";base64,".$data."\" />
 				";
 		echo $ret;
 	}
