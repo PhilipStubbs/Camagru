@@ -60,7 +60,7 @@
 		$id = "id_".$info['id'];
 		$likes = $info['likes'];
 		$ret = "
-					<img id='$id' class='userimage' style='width: 19%; object-fit: contain' onclick='comment_box(this.id , $likes)' alt='$poster$comments' Image src=\"data:".$type.";base64,".$data."\" />
+					<img id='$id' class='userimage' style='width: 19%; object-fit: contain' onclick='comment_box(this.id , $likes)' alt='$poster$comments' Image src=\"".$data."\" />
 				";
 		echo $ret;
 	}

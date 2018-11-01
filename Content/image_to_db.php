@@ -5,16 +5,13 @@
 ?>
 
 <?php
-if (isset($_POST['submit']))
+$_SESSION['message'] = $_POST['image_final'];
+$_SESSION['message'] .= "enter image to db";
+if (isset($_POST['image_final']))
 {
 	
-	$image = $_SESSION['image_tmp'];
+	$image = $_POST['image_final'];
 	$username = $_SESSION['username'];
-	$baboon = 0;
-	$camel = 0;
-	$dog = 0;
-	$duck = 0;
-	$fish = 0;
 	echo $username;
 
 
@@ -22,6 +19,13 @@ if (isset($_POST['submit']))
 	$query->execute(["img"=>$image , "usr"=>$username]);
 	
 	unset($_SESSION['image_tmp']);
+	unset($_SESSION['image_final']);
+	$_SESSION['message'] = 'Image Posted!';
+	header("Location: ../index.php");
+}
+else
+{
+	$_SESSION['error'] = "Error uploading"; 
 	header("Location: ../index.php");
 }
 

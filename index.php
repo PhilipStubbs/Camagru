@@ -8,7 +8,7 @@
 
 <head>
 	<title>Camagru</title>
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	
 	<script language="JavaScript" type="text/javascript" src="index_scripts.js"></script>
 	<link rel="stylesheet" type ="text/css" href="./Users/reg_style.css">
 </head>
@@ -72,7 +72,6 @@
 					</center>
 				<?php endif ?>
 				<p id="caption" style="padding: auto;"></p>
-			
 		</div>
 		<script>
 			// Get the modal
@@ -93,8 +92,6 @@
 
 			// Get the <span> element that closes the modal
 			var span = document.getElementsByClassName("close")[0];
-
-
 
 			// When the user clicks on <span> (x), close the modal
 			span.onclick = function() { 

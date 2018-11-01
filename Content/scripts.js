@@ -17,25 +17,61 @@ function video()
 
 function addSticker(loc)
 {
-	var info = "test";
-	console.log(info);
-	var sticker = document.createElement('img');
 
-	sticker.setAttribute("src", loc);
-	sticker.setAttribute("alt", loc);
-	sticker.setAttribute("class", 'overlayImage');
-	mainview.insertBefore(sticker, mainview.firstChild);
+	
+
+	var canvas = document.getElementById("myCanvas");
+	var ctx = canvas.getContext("2d");
+
+	var img = new Image();
+		img.src = loc;
+
+		console.log(loc);
+		console.log(img.width);
+		console.log(img.height);
+
+		
+
+		 console.log(canvas.width);
+		 console.log(canvas.height);
+		//  img.width = canvas.width;
+		//  img.height = canvas.height ;
+
+		var hRatio = img.width / canvas.width ;
+		var vRatio = img.height / canvas.height ;
+		var ratio  = Math.min ( hRatio, vRatio );
+
+		ctx.drawImage(img, 0,0, canvas.width, canvas.height);
+	// var info = "test";
+	// console.log(info);
+	// var sticker = document.createElement('img');
+
+	// sticker.setAttribute("src", loc);
+	// sticker.setAttribute("alt", loc);
+	// sticker.setAttribute("class", 'overlayImage');
+	// mainview.insertBefore(sticker, mainview.firstChild);
 }
 
-// window.onload = function()
-// {
-// var canvas = document.getElementById("myCanvas");
-// var ctx = canvas.getContext('2d');
 
-// var image = document.getElementById("theimg");
-// ctx.drawImage(image,0,0);
-// }
+function Ajaxsubmit(){
 
-
-
-// https://www.youtube.com/watch?v=ejN-oAw9vC0
+	var canvas = document.getElementById("myCanvas");
+	var jpeg = canvas.toDataURL("image/jpeg");
+	console.log(jpeg);
+	$.ajax({
+	
+			type:"POST",
+			url:'./Content/image_to_db.php',
+			
+			data:{'action':'submit',
+					'image_final':jpeg},
+			//can send multipledata like {data1:var1,data2:var2,data3:var3
+			//can use dataType:'text/html' or 'json' if response type expected 
+			success:function(responsedata){
+				   // process on data
+				   alert("Submited posted!");
+	
+			}
+		 })
+	
+	}

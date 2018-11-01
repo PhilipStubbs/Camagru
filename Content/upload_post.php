@@ -10,6 +10,7 @@ include_once("../Users/server.php");
 <head>
 	<title>New Post</title>
 	<script src="/Content/scripts.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 	<link rel="stylesheet" type ="text/css" href="../Users/reg_style.css">
 	<link rel="stylesheet" type ="text/css" href="/Content/content_style.css">
 
@@ -19,9 +20,11 @@ include_once("../Users/server.php");
 	<div class="header" style="width: 60%">
 	
 		<h2>New Post</h2>
-			<form method="post" action="/Content/image_to_db.php">
-					<button type="submit" name="submit" class="postbtn">Submit Post</button>
-			</form>
+			<!-- <form > -->
+				<a href="/Content/image_to_db.php">
+					<button type="submit" class="postbtn" onclick="Ajaxsubmit()">Submit Post</button>
+					</a>
+			<!-- </form> -->
 	</div>
 	<div class="body">
 		<?php if (isset($_SESSION['message'])) : ?>
