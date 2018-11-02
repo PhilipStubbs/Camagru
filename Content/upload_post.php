@@ -10,7 +10,7 @@ include_once("../Users/server.php");
 <head>
 	<title>New Post</title>
 	<script src="/Content/scripts.js"></script>
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 	<link rel="stylesheet" type ="text/css" href="../Users/reg_style.css">
 	<link rel="stylesheet" type ="text/css" href="/Content/content_style.css">
 
