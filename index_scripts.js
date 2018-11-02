@@ -20,7 +20,7 @@ function Ajaxcomment(){
 	//make an ajax call and get status value using the same 'id'
 	var modalImg = document.getElementById("img01");
 	var text = document.getElementById('the_comment').value
-	// console.log(src);
+
 	$.ajax({
 	
 			type:"POST",//or GET
@@ -44,7 +44,7 @@ function Ajaxlike(){
 
 	//make an ajax call and get status value using the same 'id'
 	var modalImg = document.getElementById("img01");
-	// console.log(src);
+
 	$.ajax({
 	
 			type:"POST",//or GET
@@ -67,7 +67,7 @@ function Ajaxlike(){
 
 		//make an ajax call and get status value using the same 'id'
 		var modalImg = document.getElementById("img01");
-		// console.log(src);
+
 		$.ajax({
 		
 				type:"POST",//or GET
@@ -79,7 +79,7 @@ function Ajaxlike(){
 				//can use dataType:'text/html' or 'json' if response type expected 
 				success:function(responsedata){
 					   // process on data
-					   alert("Liked!");
+					   window.location = "index.php";
 		
 				}
 			 })

@@ -24,34 +24,8 @@ function addSticker(loc)
 	var img = new Image();
 	img.src = loc;
 
-	console.log(loc);
-
 	ctx.drawImage(img, 0,0, canvas.width, canvas.height);
 
-	// var canvas = document.getElementById("myCanvas");
-	// var ctx = canvas.getContext("2d");
-
-	// var img = new Image();
-	// 	img.src = loc;
-
-	// 	console.log(loc);
-	
-	// 	//  img.width = canvas.width;
-	// 	//  img.height = canvas.height ;
-
-	// 	var hRatio = img.width / canvas.width ;
-	// 	var vRatio = img.height / canvas.height ;
-	// 	var ratio  = Math.min ( hRatio, vRatio );
-
-	// 	ctx.drawImage(img, 0,0, canvas.width / 2, canvas.height / 2);
-	// var info = "test";
-	// console.log(info);
-	// var sticker = document.createElement('img');
-
-	// sticker.setAttribute("src", loc);
-	// sticker.setAttribute("alt", loc);
-	// sticker.setAttribute("class", 'overlayImage');
-	// mainview.insertBefore(sticker, mainview.firstChild);
 }
 
 
@@ -59,7 +33,6 @@ function Ajaxsubmit(){
 
 	var canvas = document.getElementById("myCanvas");
 	var jpeg = canvas.toDataURL("image/jpeg");
-	console.log(jpeg);
 	$.ajax({
 	
 			type:"POST",
@@ -72,6 +45,7 @@ function Ajaxsubmit(){
 			success:function(responsedata){
 				   // process on data
 				   alert("Submited posted!");
+				   window.location = "index.php";
 	
 			}
 		 })

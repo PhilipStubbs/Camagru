@@ -19,12 +19,7 @@
 	<?php include_once('../header_template.php'); ?>
 	<div class="header" style="width: 60%">
 	
-		<h2>New Post</h2>
-			<!-- <form > -->
-				<a href="/Content/image_to_db.php">
-					<button type="submit" class="postbtn" onclick="Ajaxsubmit()">Submit Post</button>
-					</a>
-			<!-- </form> -->
+		
 	</div>
 	<div class="body">
 		<?php if (isset($_SESSION['message'])) : ?>
@@ -94,12 +89,11 @@
 					context.drawImage(myCanvas, 0, 0, width, height);
 					img.src = can.toDataURL('image/png');
 					img.setAttribute("height", "100");
-					console.log(img.src);
 					snp.insertBefore(img, snp.firstChild);
 					img.addEventListener("click", function() {
 						Ajax_post(img.src);
 						});
-					console.log (img);
+
 				}
 
 				function Ajax_post(src)

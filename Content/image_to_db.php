@@ -17,11 +17,10 @@ if (isset($_POST['save']))
 	$query->execute(["img"=>$image , "usr"=>$username]);
 	
 	$_SESSION['message'] = 'Image Posted!';
+	unset($_POST['save']);
 	header("Location: ../index.php");
 
 }
-$_SESSION['message'] = $_POST['image_final'];
-$_SESSION['message'] .= "enter image to db";
 if (isset($_POST['image_final']))
 {
 	

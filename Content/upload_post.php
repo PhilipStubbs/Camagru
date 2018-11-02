@@ -21,9 +21,9 @@ include_once("../Users/server.php");
 	
 		<h2>New Post</h2>
 			<!-- <form > -->
-				<a href="/Content/image_to_db.php">
+				<!-- <a href="/Content/image_to_db.php"> -->
 					<button type="submit" class="postbtn" onclick="Ajaxsubmit()">Submit Post</button>
-					</a>
+					<!-- </a> -->
 			<!-- </form> -->
 	</div>
 	<div class="body">
