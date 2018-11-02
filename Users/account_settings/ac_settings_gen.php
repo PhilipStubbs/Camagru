@@ -50,6 +50,19 @@
 			header('Location: ../../index.php');
 		// header('location: ac_settings_gen.php');
 	};
+	if (isset($_POST['notify']))
+	{
+		if ( $_POST['notify'] == 1)
+			$notify = 1;
+		else
+			$notify = 0;
+
+		$update_con = "UPDATE $dbname.users SET notify=$notify WHERE username='$username'";
+		$conn->exec($update_con);
+		$_SESSION['message'] = $notify . $username;
+		$_SESSION['message'] = "Info Updated";
+		header('Location: ../../index.php');
+	}
 	
 ?>
 
@@ -85,6 +98,14 @@
 			<label>Email</label>
 			<input type="email" name="email" value="<?php echo $email; ?>" pattern="[^()/><\][\\\x22,;|]+">
 		</div>
+
+		<label>Notify</label>
+		<input list="notify" name="notify">
+			<datalist id="notify">
+				<option value="0">Notifcation Off</option>
+				<option value="1">Notifcation On</option>
+			</datalist>
+		<input type="submit" name="update_notify">
 
 		<div class="input-group">
 			<button type="submit" name="update_gen" class="btn">Update</button>

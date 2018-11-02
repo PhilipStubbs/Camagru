@@ -18,30 +18,32 @@ function video()
 function addSticker(loc)
 {
 
-	
-
 	var canvas = document.getElementById("myCanvas");
 	var ctx = canvas.getContext("2d");
 
 	var img = new Image();
-		img.src = loc;
+	img.src = loc;
 
-		console.log(loc);
-		console.log(img.width);
-		console.log(img.height);
+	console.log(loc);
 
-		
+	ctx.drawImage(img, 0,0, canvas.width, canvas.height);
 
-		 console.log(canvas.width);
-		 console.log(canvas.height);
-		//  img.width = canvas.width;
-		//  img.height = canvas.height ;
+	// var canvas = document.getElementById("myCanvas");
+	// var ctx = canvas.getContext("2d");
 
-		var hRatio = img.width / canvas.width ;
-		var vRatio = img.height / canvas.height ;
-		var ratio  = Math.min ( hRatio, vRatio );
+	// var img = new Image();
+	// 	img.src = loc;
 
-		ctx.drawImage(img, 0,0, canvas.width, canvas.height);
+	// 	console.log(loc);
+	
+	// 	//  img.width = canvas.width;
+	// 	//  img.height = canvas.height ;
+
+	// 	var hRatio = img.width / canvas.width ;
+	// 	var vRatio = img.height / canvas.height ;
+	// 	var ratio  = Math.min ( hRatio, vRatio );
+
+	// 	ctx.drawImage(img, 0,0, canvas.width / 2, canvas.height / 2);
 	// var info = "test";
 	// console.log(info);
 	// var sticker = document.createElement('img');

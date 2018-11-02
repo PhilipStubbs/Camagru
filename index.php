@@ -57,9 +57,11 @@
 		</form>
 	
 		<div id="myModal" class="modal">
+			<?php if (isset($_SESSION['username'])) : ?>
 				<form>
 					<button class="btn" onclick="Ajaxdelete()">Delete Post as <?php echo $_SESSION['username']?>?</button>
 				</form>
+			<?php endif ?>
 				<span class="close">&times;</span>
 				<img class="modal-content" id="img01" style="max-width: 20%;">
 				<?php if (isset($_SESSION['username'])) : ?>
@@ -103,6 +105,7 @@
 
 	</div>
 	<?php include_once('footer_template.php'); ?>
+	
 </body>
 </html>
 

@@ -16,6 +16,7 @@ if (isset($_POST['value']) && $_POST['value'] == $dbpassword)
 		password VARCHAR (1024),
 		confirmed BIT DEFAULT 0,
 		confirmcode VARCHAR (1024),
+		notify BIT DEFAULT 1,
 		date TIMESTAMP NOT NULL default CURRENT_TIMESTAMP)";
 
 	$images = "CREATE TABLE $dbname.images (

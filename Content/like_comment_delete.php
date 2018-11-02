@@ -13,6 +13,24 @@ if (isset($_POST['action']) && isset($_POST['image_id']))
 		$liked = $conn->prepare("UPDATE $dbname.images SET likes = likes + :new WHERE id = :img_id");
 		$liked->execute(["new"=>1 ,"img_id"=>$id]);
 		$_SESSION['message'] ="Image Liked!";
+
+		$find_email =  $conn->prepare("SELECT * FROM images INNER JOIN users ON users.username = images.username WHERE images.id = :img_id");
+		$find_email->execute(["img_id"=>$id]);
+		$res= $find_email->fetchAll();
+			
+
+		foreach ($res as $tmp)
+		{
+			$email = $tmp["email"];
+			$notify = $tmp['notify'];
+		}
+
+		if ($notify == 1)
+		{
+			sendmail($_SESSION['firstname'] ,$email, $comment, 0);
+		}
+
+
 	}
 	else if ($action == 'comment')
 	{
@@ -24,6 +42,21 @@ if (isset($_POST['action']) && isset($_POST['image_id']))
 					VALUES('$id', '$comment', '$user')";
 			$conn->exec($insert);
 			$_SESSION['message'] ="Posted : " .$comment;
+
+			$find_email =  $conn->prepare("SELECT * FROM images INNER JOIN users ON users.username = images.username WHERE images.id = :img_id");
+			$find_email->execute(["img_id"=>$id]);
+			$res= $find_email->fetchAll();
+				
+
+			foreach ($res as $tmp)
+			{
+				$email = $tmp["email"];
+				$notify = $tmp['notify'];
+			}
+			if ($notify == 1)
+			{
+				sendmail($_SESSION['firstname'] ,$email, $comment, 1);
+			}
 		}
 		else
 			$_SESSION['error'] = "No Comment";
@@ -49,5 +82,27 @@ if (isset($_POST['action']) && isset($_POST['image_id']))
 	}
 }
 
+function sendmail($user ,$address, $user_message, $switch)
+{
+	$headers = "From: noreply@philipstubbs.co.za\r\n";
+	$headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
+
+	if ($switch == 1)
+	{
+		$message = " 
+		<h1> $user commented on one of your posts!.</h1>
+		
+		They Said ".$user_message."<br />
+
+		<h2>Enjoy</h2>
+		";
+	}
+	else 
+		$message = " <h1> $user Liked one of your posts!.</h1>
+		
+		<h2>Enjoy</h2>
+		";
+	mail($address, "Notification", $message , $headers);
+}
 // header('Location: ../index.php');
 ?>

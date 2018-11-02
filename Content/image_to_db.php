@@ -5,6 +5,21 @@
 ?>
 
 <?php
+
+if (isset($_POST['save']))
+{
+	$image = $_POST['image_final'];
+	$username = $_SESSION['username'];
+
+
+
+	$query = $conn->prepare("INSERT INTO $dbname.images (image ,username) VALUES( :img, :usr)");
+	$query->execute(["img"=>$image , "usr"=>$username]);
+	
+	$_SESSION['message'] = 'Image Posted!';
+	header("Location: ../index.php");
+
+}
 $_SESSION['message'] = $_POST['image_final'];
 $_SESSION['message'] .= "enter image to db";
 if (isset($_POST['image_final']))
