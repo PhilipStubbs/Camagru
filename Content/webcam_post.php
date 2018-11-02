@@ -96,58 +96,34 @@
 					img.setAttribute("height", "100");
 					console.log(img.src);
 					snp.insertBefore(img, snp.firstChild);
-					img.addEventListener("click", save);
+					img.addEventListener("click", function() {
+						Ajax_post(img.src);
+						});
 					console.log (img);
 				}
 
-				function save()
-				{
-				if (confirm("Save Photo?"))
-				{
-					var xhr = new XMLHttpRequest();
-					var url = "/Content/image_to_db.php";
-					var usr = '<?php echo $_SESSION["username"]; ?>'
-					var pic = (encodeURIComponent(JSON.stringify(this.src)));
-					var vars = "username="+usr+"&image="+pic+"&save=true";
-					console.log (vars);
-					xhr.open("POST", url, true);
-					xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-					xhr.onreadystatechange = function()
-					{
-						if (xhr.readyState == 4 && xhr.status == 200)
-						{
-							var return_data = xhr.responseText;
-							document.getElementById("status").innerHTML = return_data;
-						}
-					}
-				}
-				xhr.send(vars);
-				document.getElementById("status").innerHTML = "testing";
-				}
-
-				function Ajax_post()
+				function Ajax_post(src)
 				{
 					if (confirm("Save Photo?"))
 					{
-					var canvas = document.getElementById("myCanvas");
-					var jpeg = canvas.toDataURL("image/jpeg");
-					console.log(jpeg);
+		
 					$.ajax({
 
 						type:"POST",
 						url:'./Content/image_to_db.php',
 						
 						data:{'action':'submit',
-								'image_final':jpeg},
-						//can send multipledata like {data1:var1,data2:var2,data3:var3
-						//can use dataType:'text/html' or 'json' if response type expected 
+								'image_final':src},
+
 						success:function(responsedata)
 							{
 							// process on data
 							alert("Submited posted!");
+							window.location = "index.php";
 							}
 						})
 					}
+					
 				}
 			</script>
 
