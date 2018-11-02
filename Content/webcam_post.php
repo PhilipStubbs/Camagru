@@ -110,7 +110,7 @@
 					$.ajax({
 
 						type:"POST",
-						url:'https//philipstubbs.co.za/Content/image_to_db.php',
+						url:'/Content/image_to_db.php',
 						
 						data:{'action':'submit',
 								'image_final':src},
