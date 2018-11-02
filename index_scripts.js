@@ -24,7 +24,7 @@ function Ajaxcomment(){
 	$.ajax({
 	
 			type:"POST",//or GET
-			url:'./Content/like_comment_delete.php',
+			url:'https//philipstubbs.co.za/Content/like_comment_delete.php',
 							   //  (or whatever your url is)
 			data:{'action':'comment',
 					'image_id':modalImg.alt,
@@ -48,7 +48,7 @@ function Ajaxlike(){
 	$.ajax({
 	
 			type:"POST",//or GET
-			url:'./Content/like_comment_delete.php',
+			url:'https//philipstubbs.co.za/Content/like_comment_delete.php',
 							   //  (or whatever your url is)
 			data:{'action':'like',
 					'image_id':modalImg.alt},
@@ -71,7 +71,7 @@ function Ajaxlike(){
 		$.ajax({
 		
 				type:"POST",//or GET
-				url:'./Content/like_comment_delete.php',
+				url:'https//philipstubbs.co.za/Content/like_comment_delete.php',
 								   //  (or whatever your url is)
 				data:{'action':'delete',
 						'image_id':modalImg.alt},
