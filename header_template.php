@@ -2,7 +2,7 @@
 <html>
 <head>
 	<?php include_once("base.php"); ?>
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 	<link rel="stylesheet" type ="text/css" href="template_style.css">
 </head>
 <body>
