@@ -1,14 +1,15 @@
 <!DOCTYPE html>
-<?php 
-	if (!$_SESSION || !isset($_SESSION['username']) || empty($_SESSION))
-		header('Location: ../index.php');
-?>
+
 
 <?php 
 include_once("../base.php"); 
 include_once("../Users/server.php"); 
 ?>
 
+<?php 
+	if (!$_SESSION || !isset($_SESSION['username']) || empty($_SESSION))
+		header('Location: ../index.php');
+?>
 <html>
 
 <head>

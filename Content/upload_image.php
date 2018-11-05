@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<?php include('../Users/server.php'); ?>
 <?php 
 	if (!$_SESSION || !isset($_SESSION['username']) || empty($_SESSION))
 		header('Location: ../index.php');
