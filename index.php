@@ -47,15 +47,6 @@
 				</h3>
 			</div>
 		<?php endif ?>
-		<?php include_once('populate_homepage.php')?>
-		<form method="post" action="index.php" >
-			<div >
-				<button type="submit" name="prev_page" class="btn">Starting Page</button>
-				<button type="submit" name="next_page" class="btn">Next Page</button>
-			</div>
-			
-		</form>
-	
 		<div id="myModal" class="modal">
 			<?php if (isset($_SESSION['username'])) : ?>
 				<form>
@@ -75,31 +66,18 @@
 				<?php endif ?>
 				<p id="caption" style="padding: auto;"></p>
 		</div>
+		<?php include_once('populate_homepage.php')?>
+		<form method="post" action="index.php" >
+			<div >
+				<button type="submit" name="prev_page" class="btn">Starting Page</button>
+				<button type="submit" name="next_page" class="btn">Next Page</button>
+			</div>
+			
+		</form>
+	
+		
 		<script>
-			// Get the modal
-			function comment_box(clickedID, likes)
-{
-			var modal = document.getElementById('myModal');
-
-			// Get the image and insert it inside the modal - use its "alt" text as a caption
-			var img = document.getElementById(clickedID);
-			var modalImg = document.getElementById("img01");
-			var captionText = document.getElementById("caption");
-			img.onclick = function(){
-				modal.style.display = "block";
-				modalImg.src = this.src;
-				modalImg.alt = this.id;
-				captionText.innerHTML = "Likes : "+ likes + "<br />" + this.alt;
-			}
-
-			// Get the <span> element that closes the modal
-			var span = document.getElementsByClassName("close")[0];
-
-			// When the user clicks on <span> (x), close the modal
-			span.onclick = function() { 
-				modal.style.display = "none";
-			}
-		}
+		
 		</script>
 
 

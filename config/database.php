@@ -3,9 +3,9 @@
 if ($_SERVER['REQUEST_URI'] == "/config/database.php")
 	header('Location: ../../index.php');
 
-$servername = "178.128.45.163";
-$dbuser = "notroot";
-$dbpassword = "123456";
+$servername = "localhost";
+$dbuser = "root";
+$dbpassword = "";
 $dbname = "camagru_db";
 
 
