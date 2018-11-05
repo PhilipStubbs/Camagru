@@ -57,7 +57,7 @@
 				<img class="modal-content" id="img01" style="max-width: 20%;">
 				<?php if (isset($_SESSION['username'])) : ?>
 					<center>
-						<input id="the_comment" type=text pattern="[^()/><\][\\\x22,;|]+">
+						<input id="the_comment" type=text >
 						<button  class="btn" onclick="Ajaxcomment()">Post Comment</button>
 						
 						<button class="btn" onclick="Ajaxlike()" >Like</button>
