@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <?php include('../Users/server.php'); ?>
-<?php include_once("../base.php"); 
-	if (!$_SESSION)
-		header('Location: ../../index.php');
+<?php include_once("../base.php"); ?>
+<?php 
+if (!$_SESSION || !isset($_SESSION['username']) || empty($_SESSION))
+	header('Location: ../index.php');
 ?>
-
 <html>
 <head>
 	<title>New Post</title>

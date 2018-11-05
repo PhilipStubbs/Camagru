@@ -1,4 +1,8 @@
 <!DOCTYPE html>
+<?php 
+	if (!$_SESSION || !isset($_SESSION['username']) || empty($_SESSION))
+		header('Location: ../index.php');
+?>
 
 <?php 
 include_once("../base.php"); 

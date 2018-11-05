@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <?php include('server.php'); ?>
 <?php include_once("../base.php"); ?>
+<?php 
+	if (!$_SESSION || !isset($_SESSION['username']) || empty($_SESSION))
+		header('Location: ../index.php');
+?>
 
 <?php
 
@@ -40,31 +44,3 @@
 </html>
 
 
-
-
-	<!-- 
-		<div id="regform" style="width: 60%;">
-		<div style="width: 20%;"  >
-			<a href="/Users/account_settings/ac_settings_gen.php" >
-				<div class="ac_setting_btn">
-					<p>General</p>
-				</div>
-			</a>
-			<a href="/Users/account_settings/ac_settings_psw.php" >
-				<div class="ac_setting_btn">
-					<p>Username</p>
-				</div>
-			</a>
-			<a href="/Users/account_settings/ac_settings_psw.php" >
-				<div class="ac_setting_btn">
-					<p>Personal</p>
-				</div>
-			</a>
-			<a href="/Users/account_settings/ac_settings_psw.php" >
-				<div class="ac_setting_btn">
-					<p>Password</p>
-				</div>
-			</a>
-		</div>
-	
-		 -->
