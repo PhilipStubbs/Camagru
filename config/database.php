@@ -3,6 +3,8 @@
 if ($_SERVER['REQUEST_URI'] == "/config/database.php")
 	header('Location: ../../index.php');
 
+//Server Now deleted
+
 $servername = "localhost";
 $dbuser = "root";
 $dbpassword = "";
